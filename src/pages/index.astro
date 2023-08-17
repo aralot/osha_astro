@@ -1,8 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/header';
+import Courses from '../components/courses';
+import School from '../components/school';
 ---
 
 <Layout title="Мини-курсы по программированию для детей 8-17 лет">
   <Header />
+  <div class="content">
+    <Courses />
+    <School />
+  </div>
 </Layout>
+
+<style>
+  .content {
+    @media (min-width: 1200px) {
+      width: 1160px;
+      margin: 0 auto;
+    }
+  }
+</style>

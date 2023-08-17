@@ -1,0 +1,303 @@
+---
+import scratch from './scratch.svg';
+import roblox from './roblox.svg';
+import blogging from './blogging.svg';
+import python from './python.png';
+import frontend from './frontend.png';
+import unity from './unity.svg';
+import design from './design.svg';
+---
+
+<div class="container">
+  <div class="head">
+    <div class="title">Мини-курс — только начало большого пути</div>
+    <div class="description">
+      Продолжайте обучение в Алгоритмике на&nbsp;направлении, которое интересно
+      вашему&nbsp;ребенку
+    </div>
+  </div>
+  <div class="grid">
+    <div class="grid-item scratch"><img src={scratch} />Scratch</div>
+    <div class="grid-item roblox"><img src={roblox} />Геймдизайн в Roblox</div>
+    <div class="grid-item python"><img src={python} />Python</div>
+  </div>
+  <div class="grid">
+    <div class="grid-item blogging"><img src={blogging} />Видеоблогинг</div>
+    <div class="grid-item frontend"><img src={frontend} />Фронтенд</div>
+    <div class="grid-item unity"><img src={unity} />Unity</div>
+    <div class="grid-item design"><img src={design} />Дизайн</div>
+  </div>
+</div>
+
+<style lang="scss">
+  .container {
+    padding: 40px 20px 75px;
+    background: #f5f8fa;
+
+    @media (min-width: 1200px) {
+      padding: 68px 40px 85px 60px;
+      margin-bottom: 100px;
+      border-radius: 32px;
+    }
+  }
+
+  .head {
+    @media (min-width: 1200px) {
+      display: grid;
+      grid-template-columns: 546px 419px;
+      grid-column-gap: 64px;
+      margin-bottom: 70px;
+    }
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--day-text-primary);
+
+    @media (min-width: 1200px) {
+      margin-bottom: unset;
+      font-size: 46px;
+      line-height: 51px;
+      letter-spacing: -0.02em;
+    }
+  }
+
+  .description {
+    margin-bottom: 40px;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--day-text-primary);
+    max-width: 370px;
+
+    @media (min-width: 1200px) {
+      margin-bottom: unset;
+      padding-top: 14px;
+      line-height: 21px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    & ~ & {
+      margin-top: 20px;
+    }
+
+    @media (min-width: 1200px) {
+      flex-direction: unset;
+      gap: 16px;
+
+      & ~ & {
+        margin-top: 42px;
+      }
+    }
+  }
+
+  .grid-item {
+    position: relative;
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: var(--day-text-primary);
+    border-radius: 12px;
+
+    img {
+      position: absolute;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 22px;
+      line-height: 36px;
+    }
+  }
+
+  .scratch {
+    padding: 7px 30px 7px 78px;
+    background: #daf0fe;
+    margin-right: auto;
+
+    img {
+      top: -14px;
+      left: 9px;
+      width: 63px;
+      height: 59px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 30px 7px 98px;
+      margin-right: unset;
+
+      img {
+        top: -17px;
+        left: 10px;
+        width: 79px;
+        height: 74px;
+      }
+    }
+  }
+
+  .roblox {
+    padding: 6px 85px 6px 17px;
+    background: #f5e2fe;
+    margin-left: auto;
+
+    img {
+      top: -12px;
+      right: 12px;
+      width: 43px;
+      height: 62px;
+      transform: scaleX(-1);
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 51px 7px 83px;
+      margin-left: unset;
+
+      img {
+        top: -15px;
+        left: 19px;
+        right: unset;
+        width: 55px;
+        height: 78px;
+        transform: unset;
+      }
+    }
+  }
+
+  .python {
+    padding: 6px 32px 6px 93px;
+    background: #d0fed0;
+    margin-right: auto;
+
+    img {
+      top: -12px;
+      left: 12px;
+      width: 72px;
+      height: 65px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 35px 7px 117px;
+      margin-right: unset;
+
+      img {
+        top: -16px;
+        left: 12px;
+        width: 101px;
+        height: 83px;
+      }
+    }
+  }
+
+  .blogging {
+    padding: 6px 90px 6px 16px;
+    background: #ffdefd;
+    margin-left: auto;
+
+    img {
+      top: -17px;
+      right: 9px;
+      width: 53px;
+      height: 66px;
+      transform: scaleX(-1);
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 43px 7px 93px;
+      margin-left: unset;
+
+      img {
+        top: -22px;
+        left: 19px;
+        right: unset;
+        width: 66px;
+        height: 83px;
+        transform: unset;
+      }
+    }
+  }
+
+  .frontend {
+    padding: 6px 25px 6px 74px;
+    background: #feeac5;
+    margin-right: auto;
+
+    img {
+      top: -7px;
+      left: 9px;
+      width: 60px;
+      height: 57px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 35px 7px 93px;
+      margin-right: unset;
+
+      img {
+        top: -9px;
+        left: 11px;
+        width: 78px;
+        height: 73px;
+      }
+    }
+  }
+
+  .unity {
+    padding: 6px 108px 6px 16px;
+    background: #ffe3e5;
+    margin-left: auto;
+
+    img {
+      top: -9px;
+      right: 12px;
+      width: 77px;
+      height: 66px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 40px 7px 119px;
+      margin-left: unset;
+
+      img {
+        top: -12px;
+        left: 15px;
+        right: unset;
+        width: 97px;
+        height: 83px;
+      }
+    }
+  }
+
+  .design {
+    padding: 6px 26px 6px 78px;
+    background: #fef29e;
+    margin-right: auto;
+
+    img {
+      top: -20px;
+      left: 5px;
+      width: 67px;
+      height: 74px;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 7px 34px 7px 98px;
+      margin-right: unset;
+
+      img {
+        top: -26px;
+        left: 6px;
+        width: 84px;
+        height: 92px;
+      }
+    }
+  }
+</style>
