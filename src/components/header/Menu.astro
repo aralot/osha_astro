@@ -1,0 +1,175 @@
+---
+import Icon from 'astro-icon';
+
+import '../ui-kit/typography/header.scss';
+
+const { items } = Astro.props;
+---
+
+<div class="container">
+  <div id="content" class="content">
+    {
+      items.map(([id, title]) => (
+        <a href={`#${id}`} class="link">
+          {title}
+        </a>
+      ))
+    }
+  </div>
+  <button class="mobile-button" id="mobile-button">
+    <Icon name="menu" />
+  </button>
+  <div id="popup" class="popup">
+    <div id="popup-backdrop" class="popup-backdrop"></div>
+    <div id="popup-wrapper" class="popup-wrapper">
+      <div id="popup-content" class="popup-content">
+        <div class="popup-header h2">Меню</div>
+      </div>
+      <button id="popup-close" class="popup-close"><Icon name="close" /></button
+      >
+    </div>
+  </div>
+</div>
+
+<script>
+  const mobileButton = document.getElementById('mobile-button');
+  const content = document.getElementById('content');
+
+  const popup = document.getElementById('popup');
+  const popupBackdrop = document.getElementById('popup-backdrop');
+  const popupWrapper = document.getElementById('popup-wrapper');
+  const popupClose = document.getElementById('popup-close');
+  const popupContent = document.getElementById('popup-content');
+
+  mobileButton.addEventListener('click', () => {
+    popup.classList.add('is-visible');
+  });
+
+  popupBackdrop.addEventListener('click', event => {
+    if (event.target === event.currentTarget) {
+      popup.classList.remove('is-visible');
+    }
+  });
+
+  popupClose.addEventListener('click', event => {
+    popup.classList.remove('is-visible');
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.keyCode === 27) {
+      popup.classList.remove('is-visible');
+    }
+  });
+
+  if (!window.matchMedia('(min-width: 1200px)').matches) {
+    popupContent.appendChild(content);
+  }
+</script>
+
+<style lang="scss">
+  .container {
+    @media (min-width: 1200px) {
+      display: flex;
+      padding-top: 25px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      height: 20px;
+      margin-top: 3px;
+    }
+  }
+
+  .link {
+    align-items: flex-start;
+    color: var(--black_pearl);
+    cursor: pointer;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    height: 40px;
+    justify-content: flex-start;
+    line-height: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @media (min-width: 1200px) {
+      color: var(--tokens-day-text-primary);
+      font-size: 16px;
+      line-height: 20px;
+      padding: 0 16px;
+
+      &:hover {
+        color: var(--tokens-day-interactive-primaryHover);
+      }
+    }
+  }
+
+  .mobile-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 24px;
+    height: 24px;
+
+    @media (min-width: 1200px) {
+      display: none;
+    }
+  }
+
+  .popup-close {
+    position: absolute;
+    height: 24px;
+    right: 16px;
+    top: 24px;
+    width: 24px;
+    z-index: 1;
+  }
+
+  .popup-backdrop {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    height: 100%;
+    left: 0px;
+    overflow: hidden scroll;
+    place-content: center;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
+
+  .popup-wrapper {
+    background: rgb(255, 255, 255);
+    border-radius: 12px 12px 0 0;
+    bottom: 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 28px -8px;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    margin: auto;
+    position: fixed;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.5, 0, 0.7, 1) 0s;
+    width: 100%;
+  }
+
+  .is-visible .popup-backdrop {
+    display: flex;
+  }
+
+  .is-visible .popup-wrapper {
+    transform: translateY(0);
+  }
+
+  .popup-content {
+    padding: 24px 16px 16px;
+    flex-grow: 1;
+  }
+</style>

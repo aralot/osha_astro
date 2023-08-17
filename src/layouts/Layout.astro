@@ -1,0 +1,224 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'Cera CY';
+    src: url('/fonts/Cera-Bold-Web.ttf');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Cera CY';
+    src: url('/fonts/Cera-Regular-Web.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Cera CY', Helvetica, Arial, sans-serif;
+  }
+
+  .grecaptcha-badge {
+    display: none;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  :root {
+    /* Colors */
+    --amber: #ffc002;
+    --black: #000000;
+    --black_pearl: #0f1c2c;
+    --blackcurrant: #070c13;
+    --blue: #1c92ff;
+    --blue_2: #48aac6;
+    --blue_3: #2bd6d6;
+    --blue_base_10: #edf7ff;
+    --blue_violet: #dfe8fe;
+    --bright_blue: #16a0c1;
+    --bright_pink: #fe5b78;
+    --bright_turquoise: #03563a;
+    --bright_yellow_green: #97c012;
+    --brown: #ae741c;
+    --catalina_blue: #2d4462;
+    --cherry: #8f2156;
+    --corn_yellow: #fff75c;
+    --crimson: #c13461;
+    --cyan: #d1f5ff;
+    --dark_BG: #191929;
+    --dark_blue: #2d4562;
+    --dark_blue_2: #174e7b;
+    --dark_brown: #905d2d;
+    --dark_brown_2: #664b22;
+    --dark_brown_3: #693119;
+    --dark_orange: #db9200;
+    --dark_purple_2: #6e3cae;
+    --dark_purple_3: #5c22a6;
+    --dark_purple_hover: #a84ae9;
+    --dark_yellow: #e7b30c;
+    --dark_yellow_2: #ffbe02;
+    --decorative_blue: #f0f6fd;
+    --deep_green: #065664;
+    --divider_and_input_border: #d8dbe2;
+    --ghost_blue: #f2f9fc;
+    --gold: #e2c029;
+    --green: #38bd60;
+    --green_blue: #0095bb;
+    --green_hover: #49d07c;
+    --grey_05: #f8f8f8;
+    --grey_10: #efefef;
+    --grey_20: #e0e0e0;
+    --grey_20_hover: #e7e7e7;
+    --grey_25: #dbdbdb;
+    --grey_26: #dddddd;
+    --grey_27: #d7d7d7;
+    --grey_28: #d8d9d9;
+    --grey_30: #cccccc;
+    --grey_33: #b2b2b2;
+    --grey_35: #b3b3b3;
+    --grey_40: #a2a2a2;
+    --grey_45: #979797;
+    --grey_50: #808080;
+    --grey_60: #515151;
+    --grey_65: #484848;
+    --grey_70: #333333;
+    --grey_75: #202020;
+    --interactive_error: #e23000;
+    --interactive_error_hover: #c31a1d;
+    --interactive_primary: #833ae0;
+    --interactive_primary_hover: #a548e5;
+    --interactive_progress_bar: #2cbb45;
+    --interactive_secondary: #f0daff;
+    --iris_blue: #88dbf2;
+    --iris_blue_hover: #abe6f5;
+    --irish_green: #4ea903;
+    --light_blue: #80e7ff;
+    --light_blue_grey: #5e7b9f;
+    --light_blue_grey_hover: #9eb0c5;
+    --light_cherry: #d24397;
+    --light_coral: #ff7f7f;
+    --light_cyan: #d1f5ff;
+    --light_ocean_blue: #09b4df;
+    --light_orange: #ff9c31;
+    --light_orange_2: #ffe4d9;
+    --light_pink: #fee1f3;
+    --light_pink_hover: #ff89d3;
+    --light_purple: #f0deff;
+    --light_purple_2: #f3ecfc;
+    --light_turquoise: #17d9c5;
+    --light_yellow: #ffffc5;
+    --light_yellow_2: #fff5c6;
+    --medium_brown: #915d2d;
+    --medium_brown_hover: #be7f44;
+    --mint: #d6ffd6;
+    --moonstone: #48aac6;
+    --nero: #0f0f0f;
+    --nile_blue: #1b324f;
+    --nile_blue_hover: #425b7c;
+    --orange: #ff7842;
+    --orange_hover: #ff9c56;
+    --orange2: #ee6c2d;
+    --pale_pink: #ffb9ae;
+    --peach: #ce9178;
+    --percian_green: #009999;
+    --pink: #fa82cc;
+    --pink_hover: #fba8db;
+    --poison_green: #64cf0c;
+    --purple_50: #c19df0;
+    --purple_75: #b189f8;
+    --purple_90: #603992;
+    --purple_95: #602b7a;
+    --quartz: #d2d2d9;
+    --red: #ff5018;
+    --red_70: #ff4d43;
+    --red_base: #ffe3e5;
+    --red_hover: #ff6e3f;
+    --status_default_hover: #373b3e;
+    --status_fail: #ff4d43;
+    --status_fail_hover: #ff7062;
+    --status_review: #ffd832;
+    --status_review_hover: #ffec7b;
+    --status_success: #2cbb45;
+    --status_success_hover: #41d450;
+    --status_visited: #334e74;
+    --status_visited_hover: #48648c;
+    --storm_grey: #6a6a83;
+    --text_disabled: #858f9a;
+    --text_primary: #0f1c2c;
+    --text_secondary: #68727c;
+    --text_tertiary: #c6cbd3;
+    --transparent: transparent;
+    --turquoise: #00bcbc;
+    --ultra_light_purple: #e9eef2;
+    --wave: #cfe9ff;
+    --white: #ffffff;
+    --yellow: #ffdc40;
+    --yellow_2: #d99c00;
+    --yellow_3: #ffdd2d;
+    --yellow_green: #b4de2d;
+    --yellow_hover: #ffe856;
+    --yellow_light: #feffbf;
+
+    /* Tokens */
+    --day-text-primary: #0f1c2c;
+    --day-text-secondary: #6a6e73;
+    --day-text-disabled: #85898e;
+    --day-text-filledIcon: #b5babf;
+    --day-text-buttonPrimary: #ffffff;
+    --day-interactive-primary: #833ae0;
+    --day-interactive-primaryHover: #6c20da;
+    --day-interactive-secondary: #f0daff;
+    --day-interactive-secondaryHover: #f5e2fe;
+    --day-interactive-tertiary: #0f1c2c12;
+    --day-interactive-disabled: #0f1c2c0a;
+    --day-interactive-badge: #fd83f0;
+    --day-interactive-success: #2cbb45;
+    --day-interactive-successText: #079644;
+    --day-interactive-error: #e52f2e;
+    --day-interactive-errorHover: #c31a1d;
+    --day-interactive-errorActive: #ffd9d8;
+    --day-interactive-tooltip: #0f1c2c;
+    --day-interactive-celebrity: #4ea9fe;
+  }
+</style>
