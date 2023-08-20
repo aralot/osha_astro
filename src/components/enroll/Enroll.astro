@@ -1,0 +1,98 @@
+---
+import Form from './form';
+
+import bg1 from './bg1.webp';
+import bg2 from './bg2.webp';
+
+const { isLight } = Astro.props;
+---
+
+<div class:list={['container', { 'is-light': isLight }]} id="form-enroll">
+  <!-- @hardcode <img src={bg1} /> -->
+  <div class="title">Запишите ребенка на&nbsp;мини-курс</div>
+  <Form client:only="react" />
+</div>
+
+<style lang="scss">
+  .container {
+    position: relative;
+    padding: 40px 20px 315px;
+    margin-bottom: 56px;
+
+    /* @hardcode */
+    background: gray;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 215px;
+      background: linear-gradient(
+        180deg,
+        #18193f 3.2%,
+        #1c1834 37.42%,
+        #1f2c4f 80.01%,
+        rgba(29, 25, 53, 0) 100%
+      );
+
+      .is-light & {
+        background: linear-gradient(
+          180deg,
+          #f7f6f3 3.2%,
+          #f7f6f3 80.01%,
+          rgba(245, 244, 241, 0) 100%
+        );
+      }
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    img {
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+
+    @media (min-width: 1200px) {
+      padding: 64px 0 46px 92px;
+      margin-bottom: 100px;
+      background-size: cover;
+      border-radius: 32px;
+      min-height: 954px;
+
+      &:after {
+        display: none;
+      }
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .title {
+    position: relative;
+    margin-bottom: 8px;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: white;
+    z-index: 1;
+
+    .is-light & {
+      color: #0f1c2c;
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 422px;
+      margin-bottom: 16px;
+
+      font-size: 46px;
+      line-height: 58px;
+    }
+  }
+</style>
