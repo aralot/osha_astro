@@ -5,10 +5,18 @@ import Menu from './Menu.astro';
 import Form from './form';
 
 import background from './background.webp';
+import backgroundMobile from './background.mobile.webp';
 ---
 
 <div class="container">
-  <img class="background" src={background} />
+  <img
+    class="background"
+    srcset={`${backgroundMobile} 1141w, ${background} 2282w`}
+    sizes="(max-width: 1200px) 1141px,
+         2282px"
+    src={background}
+  />
+
   <div class="content">
     <div class="navigation">
       <div class="logo">

@@ -1,14 +1,28 @@
 ---
 import Form from './form';
 
-import background from './background.jpg';
+import background from './background.webp';
+import backgroundMobile from './background.mobile.webp';
+
 import lightBackground from './lightBackground.webp';
 
 const { isLight } = Astro.props;
 ---
 
 <div class:list={['container', { 'is-light': isLight }]} id="form-enroll">
-  <img src={isLight ? lightBackground : background} />
+  {
+    isLight ? (
+      <img src={lightBackground} loading="lazy" />
+    ) : (
+      <img
+        class="background"
+        srcset={`${backgroundMobile} 840w, ${background} 1680w`}
+        sizes="(max-width: 1200px) 840px,
+         1680px"
+        src={background}
+      />
+    )
+  }
   <div class="title">Запишите ребенка на&nbsp;мини-курс</div>
   <Form client:only="react" isLight={isLight} />
 </div>
@@ -39,7 +53,12 @@ const { isLight } = Astro.props;
         rgba(29, 25, 53, 0) 100%
       );
 
-      .is-light & {
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    &.is-light {
+      &:after {
         background: linear-gradient(
           180deg,
           #f7f6f3 3.2%,
@@ -47,19 +66,17 @@ const { isLight } = Astro.props;
           rgba(245, 244, 241, 0) 100%
         );
       }
-      z-index: 0;
-      pointer-events: none;
     }
 
     img {
-      border-radius: 32px;
       display: block;
-      height: 100%;
       left: 0;
       object-fit: cover;
+      bottom: 0;
       position: absolute;
-      top: 0;
       width: 100%;
+      object-position: right bottom;
+      height: 380px;
     }
 
     @media (min-width: 1200px) {
@@ -75,6 +92,14 @@ const { isLight } = Astro.props;
 
       &:before {
         display: none;
+      }
+
+      img {
+        border-radius: 32px;
+        bottom: 0;
+        top: 0;
+        height: 100%;
+        object-position: unset;
       }
     }
   }

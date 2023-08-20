@@ -12,7 +12,14 @@ import tgIcon from './tg.svg';
 
 <div class="container">
   <div class="grid">
-    <div class="logo"><img src={logo} /></div>
+    <div class="logo">
+      <img
+        srcset={`${logo} 142w, ${logo2} 278w`}
+        sizes="(max-width: 1200px) 142px,
+         278px"
+        src={logo2}
+      />
+    </div>
     <div class="contacts">
       <div class="socials">
         <a href="https://vk.com/algoritmikavk" target="_blank" rel="noopener">
@@ -225,6 +232,10 @@ import tgIcon from './tg.svg';
       width: auto;
     }
 
+    img {
+      height: 20px;
+    }
+
     @media (min-width: 1200px) {
       height: unset;
       margin-right: unset;
@@ -233,6 +244,10 @@ import tgIcon from './tg.svg';
       svg {
         height: unset;
         width: unset;
+      }
+
+      img {
+        height: unset;
       }
     }
   }
@@ -283,8 +298,19 @@ import tgIcon from './tg.svg';
   }
 
   .form-container {
-    width: 360px;
-    height: 200px;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+    padding: 40px 25px 60px;
+
+    @media (min-width: 1200px) {
+      order: unset;
+      width: 360px;
+      padding: unset;
+    }
   }
 
   .icon-container {

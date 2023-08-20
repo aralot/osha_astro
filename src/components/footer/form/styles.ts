@@ -3,13 +3,10 @@ import { styled } from 'styled-components';
 import { Tokens, p2ShortStyle } from '../../ui-kit';
 
 export const Wrapper = styled.form`
-  grid-column: 1 / -1;
-  grid-row: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
   flex-shrink: 0;
-  padding: 40px 25px 60px;
 
   @media (min-width: 1200px) {
     order: unset;
