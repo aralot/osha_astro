@@ -1,4 +1,6 @@
 export * from './colors';
+export * from './icon';
+export * from './icons';
 export * from './input';
 export * from './phoneInput';
 export * from './popup';

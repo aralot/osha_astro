@@ -1,0 +1,6 @@
+<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M6 6H4C2.89543 6 2 6.89543 2 8V13C2 14.1046 2.89543 15 4 15H9C10.1046 15 11 14.1046 11 13V11H10V13C10 13.5523 9.55228 14 9 14H4C3.44772 14 3 13.5523 3 13V8C3 7.44772 3.44772 7 4 7H6V6Z"
+        fill="currentColor"/>
+  <rect x="14.5" y="10.5" width="8" height="8" rx="1.5" transform="rotate(-180 14.5 10.5)" stroke="currentColor"/>
+</svg>

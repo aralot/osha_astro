@@ -1,0 +1,9 @@
+export { ReactComponent as celebrityBadge } from './sFilledCelebrityBadge.svg';
+export { ReactComponent as finish } from './sFilledFinish.svg';
+export { ReactComponent as image } from './sFilledImage.svg';
+export { ReactComponent as lock } from './sFilledLock.svg';
+export { ReactComponent as locked } from './sFilledLocked.svg';
+export { ReactComponent as sheet } from './sFilledSheet.svg';
+export { ReactComponent as smile } from './sFilledSmile.svg';
+export { ReactComponent as star } from './sFilledStar.svg';
+export { ReactComponent as video } from './sFilledVideo.svg';

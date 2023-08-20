@@ -4,14 +4,18 @@ import {
   ENTERING,
   TransitionStatus,
 } from 'react-transition-group/Transition';
+
+import { ZIndex } from '../zIndex';
 import { H2 } from '../typography';
+import { Colors } from '../colors';
+import { Icons } from '../icons';
+
 import {
   POPUP_ANIMATE_ENTERING,
   POPUP_ANIMATE_EXITING,
   POPUP_ANIMATION_TIME_S,
   Backdrop,
 } from './styles';
-import { ZIndex } from '../zIndex';
 
 const POPUP_WITH_IMAGE_HORIZONTAL_PADDING_PX = '20px';
 export const POPUP_DESKTOP_BORDER_RADIUS_PX = '12px';
@@ -63,8 +67,8 @@ export const Popup = styled.div<{
       : '28px 28px 32px'};
   width: max-content;
 
-  background: ${({ $bgColor, theme }) => $bgColor || theme.palette.white};
-  box-shadow: 0 20px 28px -8px ${({ theme }) => theme.palette.black_opacity_20};
+  background: ${({ $bgColor, theme }) => $bgColor || Colors.white};
+  box-shadow: 0 20px 28px -8px ${Colors.black_opacity_20};
 
   ${({ $bgColor }) =>
     $bgColor === 'transparent' &&
@@ -111,19 +115,17 @@ export const Title = styled(H2)`
   margin-bottom: 8px;
 `;
 
-// @hardcode
-// export const ButtonCloseDesktopPopup = styled(Icons.extraLarge.close)`
-export const ButtonCloseDesktopPopup = styled.div`
+export const ButtonCloseDesktopPopup = styled(Icons.extraLarge.close)`
   position: fixed;
   top: 20px;
   right: 20px;
 
-  color: ${({ theme }) => theme.palette.white};
+  color: ${Colors.white};
   cursor: pointer;
   z-index: ${ZIndex.POPUP};
 
   ${Popup}:hover + & {
-    color: ${({ theme }) => theme.palette.white_opacity_80};
+    color: ${Colors.white_opacity_80};
   }
 `;
 

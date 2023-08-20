@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { P2Short, Tokens } from '../../../ui-kit';
+import { P2Short, Tokens, Icons } from '../../../ui-kit';
 
 export const Container = styled.div<{ $isDisabled: boolean }>`
   position: relative;
@@ -33,16 +33,14 @@ export const Value = styled(P2Short)<{ $isDisabled: boolean }>`
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  ${({ $isDisabled, }) =>
+  ${({ $isDisabled }) =>
     $isDisabled &&
     css`
       color: ${Tokens.day.text.disabled};
     `};
 `;
 
-// @hardcode @temporary
-//export const Arrow = styled(Icons.small.arrowDown)<{
-export const Arrow = styled.div<{
+export const Arrow = styled(Icons.small.arrowDown)<{
   $isOpened: boolean;
   $isDisabled: boolean;
 }>`
@@ -52,7 +50,7 @@ export const Arrow = styled.div<{
   transition: all 0.3s;
   transform: rotate(0);
 
-  ${({ $isDisabled, }) => css`
+  ${({ $isDisabled }) => css`
     color: ${$isDisabled
       ? Tokens.day.text.disabled
       : Tokens.day.text.secondary};

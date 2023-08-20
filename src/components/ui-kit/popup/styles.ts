@@ -4,7 +4,9 @@ import {
   ENTERING,
   ENTERED,
 } from 'react-transition-group/Transition';
+
 import { ZIndex } from '../zIndex';
+import { Colors } from '../colors';
 
 export const POPUP_ANIMATE_ENTERING = 'cubic-bezier(0.5, 0, 0.7, 1)';
 export const POPUP_ANIMATE_EXITING = 'cubic-bezier(0.5, 0, 0.5, 1)';
@@ -20,7 +22,7 @@ export const Backdrop = styled.div<{
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.palette.black_opacity_30};
+  background-color: ${Colors.black_opacity_30};
   transition: opacity ${POPUP_ANIMATION_TIME_S};
   z-index: ${({ zIndex }) => zIndex || ZIndex.POPUP};
 

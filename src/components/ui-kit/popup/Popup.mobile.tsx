@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useRef } from 'react';
 import { useTheme } from 'styled-components';
 
-// @hardcode
-// import { Icon } from '../icon';
-// import { Icons } from '../icons';
+import { Icon } from '../icon';
+import { Icons } from '../icons';
+import { Colors } from '../colors';
 
 import { BasePopupMobile } from './BasePopup.mobile';
 import { ButtonClose, Content, Header, Title } from './styles.mobile';
@@ -49,12 +49,10 @@ export const PopupMobile: FunctionComponent<IPopupProps> = ({
               </Title>
               {isClosable && (
                 <ButtonClose onClick={handleClose}>
-                  {/* @hardcode
                   <Icon
                     content={Icons.large.close}
-                    color={theme.palette.black_pearl}
+                    color={Colors.black_pearl}
                   />
-                  */}
                 </ButtonClose>
               )}
             </Header>

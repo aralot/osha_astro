@@ -1,0 +1,10 @@
+export { ReactComponent as accessory } from './lThingAccessory.svg';
+export { ReactComponent as avatar } from './lThingAvatar.svg';
+export { ReactComponent as background } from './lThingBackground.svg';
+export { ReactComponent as clothes } from './lThingClothes.svg';
+export { ReactComponent as glasses } from './lThingGlasses.svg';
+export { ReactComponent as hairstyle } from './lThingHairstyle.svg';
+export { ReactComponent as hat } from './lThingHat.svg';
+export { ReactComponent as outerwear } from './lThingOuterwear.svg';
+export { ReactComponent as pet } from './lThingPet.svg';
+export { ReactComponent as makeup } from './lThingMakeup.svg';
