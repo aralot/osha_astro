@@ -1,9 +1,10 @@
 import React, { FunctionComponent, useCallback } from 'react';
 
-import { Input } from '../../ui-kit';
+import { Input } from '../input';
+
 import { IPhoneInputProps } from './types';
 
-export const RUSSIA_COUNTRY_CODE = '+7 ';
+const RUSSIA_COUNTRY_CODE = '+7 ';
 const MIN_NUMBER_COUNT = 9;
 const ERROR_MESSAGE = `Номер телефона должен содержать минимум ${MIN_NUMBER_COUNT} цифр`;
 
