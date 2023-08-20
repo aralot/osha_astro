@@ -16,10 +16,15 @@ export const CALLBACK = 'callback';
 
 interface IParams {
   branchCode?: string;
-  getDateRangeLabel(date: Date): string;
   isFooter?: boolean;
   isLight?: boolean;
 }
+
+const getDateRangeLabel = (date: Date) => {
+  const from = formatDateWithDay(date);
+  const to = formatDateWithDay(new Date(date.getTime() + THREE_DAY_MS));
+  return `${from} - ${to}`;
+};
 
 const getCookieByName = (name: string) => {
   const cookieKeyToValue = document.cookie
@@ -60,7 +65,6 @@ export const api = createApi({
 
 export function useForm({
   branchCode = BRANCH_CODE,
-  getDateRangeLabel,
   isFooter = false,
   isLight,
 }: IParams) {

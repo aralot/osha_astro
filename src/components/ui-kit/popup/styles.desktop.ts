@@ -67,7 +67,7 @@ export const Popup = styled.div<{
       : '28px 28px 32px'};
   width: max-content;
 
-  background: ${({ $bgColor, theme }) => $bgColor || Colors.white};
+  background: ${({ $bgColor }) => $bgColor || Colors.white};
   box-shadow: 0 20px 28px -8px ${Colors.black_opacity_20};
 
   ${({ $bgColor }) =>

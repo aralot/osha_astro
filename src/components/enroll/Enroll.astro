@@ -1,16 +1,16 @@
 ---
 import Form from './form';
 
-import bg1 from './bg1.webp';
-import bg2 from './bg2.webp';
+import background from './background.jpg';
+import lightBackground from './lightBackground.webp';
 
 const { isLight } = Astro.props;
 ---
 
 <div class:list={['container', { 'is-light': isLight }]} id="form-enroll">
-  <!-- @hardcode <img src={bg1} /> -->
+  <img src={isLight ? lightBackground : background} />
   <div class="title">Запишите ребенка на&nbsp;мини-курс</div>
-  <Form client:only="react" />
+  <Form client:only="react" isLight={isLight} />
 </div>
 
 <style lang="scss">
@@ -19,8 +19,10 @@ const { isLight } = Astro.props;
     padding: 40px 20px 315px;
     margin-bottom: 56px;
 
-    /* @hardcode */
-    background: gray;
+    background-color: #2a1144;
+    &.is-light {
+      background-color: transparent;
+    }
 
     &:after {
       content: '';
@@ -50,10 +52,14 @@ const { isLight } = Astro.props;
     }
 
     img {
+      border-radius: 32px;
       display: block;
+      height: 100%;
       left: 0;
+      object-fit: cover;
       position: absolute;
       top: 0;
+      width: 100%;
     }
 
     @media (min-width: 1200px) {

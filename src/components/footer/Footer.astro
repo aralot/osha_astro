@@ -1,29 +1,39 @@
 ---
+import { Icon } from 'astro-icon';
+
+import Form from './form';
+
 import logo from './logo.svg';
 import logo2 from './logo2.svg';
+import vkIcon from './vk.svg';
+import waIcon from './wa.svg';
+import tgIcon from './tg.svg';
 ---
 
 <div class="container">
   <div class="grid">
-    <div class="logo"></div>
+    <div class="logo"><img src={logo} /></div>
     <div class="contacts">
       <div class="socials">
         <a href="https://vk.com/algoritmikavk" target="_blank" rel="noopener">
-          <vk-icon></vk-icon>
+          <img src={vkIcon} />
         </a>
         <a
           href="https://api.whatsapp.com/send?phone=74951080536"
           target="_blank"
           rel="noopener"
         >
-          <wa-icon></wa-icon>
+          <img src={waIcon} />
         </a>
         <a href="https://t.me/algoritmikastudy" target="_blank" rel="noopener">
-          <tg-icon></tg-icon>
+          <img src={tgIcon} />
         </a>
       </div>
       <div class="phone href=" "tel:+74951080536">+7 495 108-05-36</div>
       <div class="address">г. Москва, ул. Солянка 1/2, стр. 1</div>
+    </div>
+    <div class="form-container">
+      <Form client:only="react" />
     </div>
     <div class="container-links">
       <div class="links">
@@ -33,7 +43,9 @@ import logo2 from './logo2.svg';
           rel="noopener"
         >
           <span>Договор оферты</span>
-          <icons.small.arrow-right />
+          <span class="icon-container">
+            <Icon name="arrowRight" />
+          </span>
         </a>
         <a
           href="https://algoritmika.org/ru/privacy"
@@ -41,11 +53,13 @@ import logo2 from './logo2.svg';
           rel="noopener"
         >
           <span>Положение об обработке персональных данных</span>
-          <icons.small.arrow-right />
+          <span class="icon-container">
+            <Icon name="arrowRight" />
+          </span>
         </a>
       </div>
+      <div class="copyright">© 2017–2023 Алгоритмика</div>
     </div>
-    <div class="copyright">© 2017–2023 Алгоритмика</div>
   </div>
 </div>
 
@@ -83,8 +97,9 @@ import logo2 from './logo2.svg';
     height: 33px;
     margin-left: 10px;
 
-    background: url('${logo2}') no-repeat center center;
-    background-size: contain;
+    img {
+      width: 100%;
+    }
 
     @media (min-width: 1200px) {
       margin-left: -45px;
@@ -94,20 +109,6 @@ import logo2 from './logo2.svg';
 
       background: url('${logo}') no-repeat center top;
       background-size: contain;
-
-      &:before {
-        content: '';
-        display: block;
-        width: 173px;
-        height: 215px;
-
-        position: absolute;
-        top: -100px;
-        left: 140px;
-
-        background: #602b7a;
-        transform: rotate(34.34deg);
-      }
     }
   }
 
@@ -163,6 +164,7 @@ import logo2 from './logo2.svg';
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-size: 14px;
 
     @media (min-width: 1200px) {
       padding-bottom: 8px;
@@ -181,28 +183,28 @@ import logo2 from './logo2.svg';
       margin-top: unset;
       padding-left: unset;
     }
-  }
 
-  .link {
-    font-size: 10px;
-    line-height: 14px;
-    text-decoration-line: underline;
-    color: #0f1c2c;
-
-    svg {
-      display: none;
-    }
-
-    @media (min-width: 1200px) {
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: -0.01em;
-      text-decoration-line: unset;
+    a {
+      font-size: 10px;
+      line-height: 14px;
+      text-decoration-line: underline;
+      color: #0f1c2c;
 
       svg {
-        display: inline;
-        vertical-align: middle;
-        margin-left: 4px;
+        display: none;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: unset;
+        line-height: 20px;
+        letter-spacing: -0.01em;
+        text-decoration-line: unset;
+
+        svg {
+          display: inline;
+          vertical-align: middle;
+          margin-left: 4px;
+        }
       }
     }
   }
@@ -280,6 +282,20 @@ import logo2 from './logo2.svg';
       bottom: unset;
       font-size: unset;
       line-height: unset;
+    }
+  }
+
+  .form-container {
+    width: 360px;
+    height: 200px;
+  }
+
+  .icon-container {
+    margin-left: -4px;
+
+    svg {
+      width: 16px;
+      height: 16px;
     }
   }
 </style>

@@ -7,9 +7,7 @@ export const Popup: FunctionComponent<IPopupProps> = ({
   desktopAttachToTop,
   ...props
 }) => {
-  // @hardcode
-  // const { isMobile } = useMediaQuery();
-  const isMobile = false;
+  const isMobile = !window.matchMedia('(min-width: 1200px)').matches;
 
   if (isMobile) {
     return <PopupMobile {...props} />;

@@ -2,6 +2,7 @@
 import Icon from 'astro-icon';
 
 import Menu from './Menu.astro';
+import Form from './form';
 
 import background from './background.webp';
 ---
@@ -21,6 +22,9 @@ import background from './background.webp';
           ['reviews', 'Отзывы'],
         ]}
       />
+      <div class="form-container">
+        <Form client:only="react" />
+      </div>
     </div>
 
     <div class="about">
@@ -312,5 +316,10 @@ import background from './background.webp';
       width: 110%;
       background: var(--day-text-filledIcon);
     }
+  }
+
+  .form-container {
+    width: 403px;
+    height: 56px;
   }
 </style>

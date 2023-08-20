@@ -4,13 +4,16 @@ import {
   ENTERING,
   ENTERED,
 } from 'react-transition-group/Transition';
+
+import { ZIndex } from '../zIndex';
+import { Colors } from '../colors';
 import { h2Style } from '../typography';
+
 import {
   POPUP_ANIMATE_ENTERING,
   POPUP_ANIMATE_EXITING,
   POPUP_ANIMATION_TIME_S,
 } from './styles';
-import { ZIndex } from '../zIndex';
 
 export const BUTTON_CLOSE_WIDTH_PX = '48px';
 export const POPUP_MOBILE_PADDING_TOP = 24;
@@ -32,7 +35,7 @@ export const Popup = styled.div<{
   width: 100%;
   max-height: ${MAX_HEIGHT};
 
-  background: ${({ $bgColor, theme }) => $bgColor || theme.palette.white};
+  background: ${({ $bgColor }) => $bgColor || Colors.white};
   border-radius: 12px 12px 0 0;
 
   overflow: hidden;

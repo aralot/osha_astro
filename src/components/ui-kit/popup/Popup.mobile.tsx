@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef } from 'react';
-import { useTheme } from 'styled-components';
 
 import { Icon } from '../icon';
 import { Icons } from '../icons';
@@ -21,7 +20,6 @@ export const PopupMobile: FunctionComponent<IPopupProps> = ({
   title,
   zIndex,
 }) => {
-  const theme = useTheme();
   const scrollableContainerRef = useRef<HTMLDivElement | null>(null);
   const isClosable = Boolean(onClose);
   const hasTitle = Boolean(title);

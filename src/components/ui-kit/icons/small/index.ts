@@ -4,9 +4,9 @@
 
 export { arrowDown } from './sArrowDown';
 
+// export { arrowRight } from './sArrowRight';
 // export { ReactComponent as arrowMiniDown } from './sArrowMiniDown.svg';
 // export { ReactComponent as arrowMiniUp } from './sArrowMiniUp.svg';
-// export { ReactComponent as arrowRight } from './sArrowRight.svg';
 // export { ReactComponent as arrowUp } from './sArrowUp.svg';
 // export { ReactComponent as attach } from './sAttach.svg';
 // export { ReactComponent as attention } from './sAttention.svg';
