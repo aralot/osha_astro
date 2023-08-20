@@ -4,10 +4,10 @@ import Providers from '../../Providers';
 
 import Form from './Form';
 
-export default () => {
+export default ({ isLight }) => {
   return (
     <Providers>
-      <Form />
+      <Form isLight={isLight} />
     </Providers>
   );
 };

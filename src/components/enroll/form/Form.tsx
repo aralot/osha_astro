@@ -47,7 +47,7 @@ export const getDateRangeLabel = (date: Date) => {
   return `${from} - ${to}`;
 };
 
-const Form: FunctionComponent = isLight => {
+const Form: FunctionComponent = ({ isLight }) => {
   // @hardcode
   const isSafari = false;
   const isDesktop = false;
