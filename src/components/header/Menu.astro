@@ -40,24 +40,23 @@ const { items } = Astro.props;
   const popupWrapper = document.getElementById('popup-wrapper');
   const popupClose = document.getElementById('popup-close');
   const popupContent = document.getElementById('popup-content');
+  const links = document.querySelectorAll('#content .link');
 
-  mobileButton.addEventListener('click', () => {
-    popup.classList.add('is-visible');
-  });
-
+  const togglePopup = show =>
+    popup?.classList[show ? 'add' : 'remove']('is-visible');
+  mobileButton.addEventListener('click', () => togglePopup(true));
   popupBackdrop.addEventListener('click', event => {
     if (event.target === event.currentTarget) {
-      popup.classList.remove('is-visible');
+      togglePopup(false);
     }
   });
-
-  popupClose.addEventListener('click', event => {
-    popup.classList.remove('is-visible');
-  });
-
+  popupClose.addEventListener('click', () => togglePopup(false));
+  links.forEach(link =>
+    link.addEventListener('click', () => togglePopup(false)),
+  );
   document.addEventListener('keydown', event => {
     if (event.keyCode === 27) {
-      popup.classList.remove('is-visible');
+      togglePopup(false);
     }
   });
 

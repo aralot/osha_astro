@@ -157,10 +157,10 @@ export const SlideBadges = styled.div`
 `;
 
 export const SlideBadge = styled.div<{
-  rotate: number;
-  top: number;
-  left: number;
-  color: string;
+  $rotate: number;
+  $top: number;
+  $left: number;
+  $color: string;
 }>`
   position: absolute;
   padding: 8px 27px 8px 14px;
@@ -173,11 +173,11 @@ export const SlideBadge = styled.div<{
   border-radius: 10px;
   white-space: nowrap;
 
-  ${({ color, left, rotate, top }) => css`
-    left: ${left}px;
-    top: ${top}px;
-    transform: rotate(${rotate}deg);
-    color: ${color};
+  ${({ $color, $left, $rotate, $top }) => css`
+    left: ${$left}px;
+    top: ${$top}px;
+    transform: rotate(${$rotate}deg);
+    color: ${$color};
   `}
 
   &:first-child:before {

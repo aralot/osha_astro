@@ -27,7 +27,7 @@ const Form: FunctionComponent = ({}) => {
   } = useForm({});
 
   return (
-    <Wrapper>
+    <Wrapper onSubmit={onSubmit}>
       <Input
         placeholder="Имя"
         value={parentName}

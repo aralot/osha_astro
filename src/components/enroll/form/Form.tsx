@@ -41,12 +41,6 @@ const formatDateWithDay = (date: Date) => {
   return `${formattedDate} (${formattedDay.toLowerCase()})`;
 };
 
-export const getDateRangeLabel = (date: Date) => {
-  const from = formatDateWithDay(date);
-  const to = formatDateWithDay(new Date(date.getTime() + THREE_DAY_MS));
-  return `${from} - ${to}`;
-};
-
 const Form: FunctionComponent = ({ isLight }) => {
   // @hardcode
   const isSafari = false;
@@ -75,7 +69,7 @@ const Form: FunctionComponent = ({ isLight }) => {
     setPhone,
     setTimeSlotValue,
     timeSlotValue,
-  } = useForm({ getDateRangeLabel, isLight });
+  } = useForm({ isLight });
 
   const dateSlots = useMemo(() => {
     return [

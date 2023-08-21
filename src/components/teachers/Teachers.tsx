@@ -48,10 +48,10 @@ const Teachers: FunctionComponent = () => {
             <SlideHeadTitle>Сергей Козлов</SlideHeadTitle>
             <SlideHeadLabel>Преподает 5 лет</SlideHeadLabel>
             <SlideBadges>
-              <SlideBadge left={50} top={190} rotate={-4} color="#18CB3F">
+              <SlideBadge $left={50} $top={190} $rotate={-4} $color="#18CB3F">
                 Программист
               </SlideBadge>
-              <SlideBadge left={116} top={225} rotate={1.3} color="#18CB3F">
+              <SlideBadge $left={116} $top={225} $rotate={1.3} $color="#18CB3F">
                 и пианист
               </SlideBadge>
             </SlideBadges>
@@ -76,10 +76,10 @@ const Teachers: FunctionComponent = () => {
             <SlideHeadTitle>Альбина Анисимова</SlideHeadTitle>
             <SlideHeadLabel>Преподает 7 лет</SlideHeadLabel>
             <SlideBadges>
-              <SlideBadge left={40} top={200} rotate={1.17} color="#4EA9FE">
+              <SlideBadge $left={40} $top={200} $rotate={1.17} $color="#4EA9FE">
                 Обучаю детей
               </SlideBadge>
-              <SlideBadge left={70} top={234} rotate={-3.5} color="#4EA9FE">
+              <SlideBadge $left={70} $top={234} $rotate={-3.5} $color="#4EA9FE">
                 в игровой форме
               </SlideBadge>
             </SlideBadges>
@@ -104,10 +104,10 @@ const Teachers: FunctionComponent = () => {
             <SlideHeadTitle>Анастасия Борисова</SlideHeadTitle>
             <SlideHeadLabel>Преподает 4 года</SlideHeadLabel>
             <SlideBadges>
-              <SlideBadge left={40} top={200} rotate={1} color="#d99a05">
+              <SlideBadge $left={40} $top={200} $rotate={1} $color="#d99a05">
                 Занимаюсь хайкингом
               </SlideBadge>
-              <SlideBadge left={20} top={234} rotate={-1} color="#d99a05">
+              <SlideBadge $left={20} $top={234} $rotate={-1} $color="#d99a05">
                 и преподаю на английском
               </SlideBadge>
             </SlideBadges>
@@ -131,10 +131,10 @@ const Teachers: FunctionComponent = () => {
             <SlideHeadTitle>Елизавета Рыжова</SlideHeadTitle>
             <SlideHeadLabel>Преподает 5 лет</SlideHeadLabel>
             <SlideBadges>
-              <SlideBadge left={40} top={200} rotate={-1} color="#1acb3f">
+              <SlideBadge $left={40} $top={200} $rotate={-1} $color="#1acb3f">
                 Строю самолеты
               </SlideBadge>
-              <SlideBadge left={80} top={238} rotate={3} color="#1acb3f">
+              <SlideBadge $left={80} $top={238} $rotate={3} $color="#1acb3f">
                 и путешествую
               </SlideBadge>
             </SlideBadges>
@@ -159,10 +159,10 @@ const Teachers: FunctionComponent = () => {
             <SlideHeadTitle>Джамиль Мухутдинов</SlideHeadTitle>
             <SlideHeadLabel>Преподает 5 лет</SlideHeadLabel>
             <SlideBadges>
-              <SlideBadge left={40} top={200} rotate={-4} color="#7745c7">
+              <SlideBadge $left={40} $top={200} $rotate={-4} $color="#7745c7">
                 Геймер
               </SlideBadge>
-              <SlideBadge left={60} top={238} rotate={-2} color="#7745c7">
+              <SlideBadge $left={60} $top={238} $rotate={-2} $color="#7745c7">
                 и гитарист
               </SlideBadge>
             </SlideBadges>

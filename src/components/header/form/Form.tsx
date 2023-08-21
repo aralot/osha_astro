@@ -22,7 +22,7 @@ const Form: FunctionComponent = ({}) => {
   } = useForm({});
 
   return (
-    <Wrapper>
+    <Wrapper onSubmit={onSubmit}>
       <PhoneInput
         value={phone}
         onChange={setPhone}
