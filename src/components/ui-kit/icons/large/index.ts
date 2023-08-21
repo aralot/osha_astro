@@ -1,16 +1,16 @@
 /**
  * Складываем иконки размером 24px на 24px
  */
-export { ok } from './lOk.tsx';
-export { close } from './lClose.tsx';
+export { ok } from './lOk';
+export { close } from './lClose';
+export { arrowLeft } from './lArrowLeft';
+export { arrowRight } from './lArrowRight';
+export { arrowUp2 } from './lArrowUp2';
+export { arrowDown2 } from './lArrowDown2';
 
-// export { ReactComponent as arrowLeft } from './lArrowLeft.svg';
-// export { ReactComponent as arrowRight } from './lArrowRight.svg';
 // export { ReactComponent as plus } from './lPlus.svg';
 // export { ReactComponent as arrowUp } from './lArrowUp.svg';
-// export { ReactComponent as arrowUp2 } from './lArrowUp2.svg';
 // export { ReactComponent as arrowDown } from './lArrowDown.svg';
-// export { ReactComponent as arrowDown2 } from './lArrowDown2.svg';
 // export { ReactComponent as try } from './lTry.svg';
 // export { ReactComponent as community } from './lCommunity.svg';
 // export { ReactComponent as class } from './lClass.svg';

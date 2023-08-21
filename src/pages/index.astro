@@ -4,6 +4,9 @@ import Header from '../components/header';
 import Courses from '../components/courses';
 import Enroll from '../components/enroll';
 import School from '../components/school';
+import Teachers from '../components/teachers';
+import Reviews from '../components/reviews';
+import Faq from '../components/faq';
 import Footer from '../components/footer';
 ---
 
@@ -13,7 +16,10 @@ import Footer from '../components/footer';
     <Courses />
     <Enroll />
     <School />
+    <Teachers client:only="react" />
+    <Reviews client:only="react" />
     <Enroll isLight />
+    <Faq client:only="react" />
   </div>
   <Footer />
 </Layout>

@@ -1,12 +1,13 @@
 ---
 import Mini from './mini';
 import About from './about';
-// import ProjectAndCertificates from './projectAndCertificates';
+import ProjectAndCertificates from './projectAndCertificates';
 import Learn from './learn';
 ---
 
 <div>
   <Mini />
   <About />
+  <ProjectAndCertificates client:only="react" />
   <Learn />
 </div>

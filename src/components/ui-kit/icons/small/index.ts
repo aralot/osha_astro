@@ -3,8 +3,9 @@
  */
 
 export { arrowDown } from './sArrowDown';
+export { arrowRight } from './sArrowRight';
+export { plus } from './sPlus';
 
-// export { arrowRight } from './sArrowRight';
 // export { ReactComponent as arrowMiniDown } from './sArrowMiniDown.svg';
 // export { ReactComponent as arrowMiniUp } from './sArrowMiniUp.svg';
 // export { ReactComponent as arrowUp } from './sArrowUp.svg';
@@ -25,7 +26,6 @@ export { arrowDown } from './sArrowDown';
 // export { ReactComponent as hand } from './sHand.svg';
 // export { ReactComponent as like } from './sLike.svg';
 // export { ReactComponent as pin } from './sPin.svg';
-// export { ReactComponent as plus } from './sPlus.svg';
 // export { ReactComponent as privacy } from './sPrivacy.svg';
 // export { ReactComponent as profile } from './sProfile.svg';
 // export { ReactComponent as project } from './sProject.svg';
