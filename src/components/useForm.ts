@@ -144,8 +144,6 @@ export function useForm({
 
       let isSuccess = false;
 
-      console.log(executeRecaptcha, 'executeRecaptcha');
-
       if (!executeRecaptcha) return isSuccess;
 
       setIsPending(true);
@@ -207,13 +205,11 @@ export function useForm({
           }
 
           await createOnlineBookingMutation(payload).unwrap();
-          // @hardcode
-          // const sleep = () => new Promise(resolve => setTimeout(resolve, 3000));
-          // await sleep();
           isSuccess = true;
         }
       } catch (e) {
         console.error(e);
+        refetchSlots();
       }
       openPopup();
       setIsPending(false);

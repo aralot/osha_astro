@@ -112,25 +112,6 @@ const Form: FunctionComponent = ({ isLight }) => {
           </Item>
         </Instruction>
 
-        <Input
-          placeholder="Имя родителя"
-          value={parentName}
-          onChange={e => setParentName(e.target.value)}
-          onFocus={() => ym('reachGoal', 'click_parentname')}
-          required
-        />
-        <Input
-          placeholder="Имя ребенка"
-          value={childFirstName}
-          onChange={e => setChildFirstName(e.target.value)}
-          required
-        />
-        <Input
-          placeholder="Фамилия ребенка"
-          value={childLastName}
-          onChange={e => setChildLastName(e.target.value)}
-          required
-        />
         <WithIconCalendar
           $isEmpty={!childBirthDate}
           $isSafariDesktop={isSafari && isDesktop}
@@ -150,6 +131,25 @@ const Form: FunctionComponent = ({ isLight }) => {
             onFocus={() => ym('reachGoal', 'click_birthday')}
           />
         </WithIconCalendar>
+        <Input
+          placeholder="Имя родителя"
+          value={parentName}
+          onChange={e => setParentName(e.target.value)}
+          onFocus={() => ym('reachGoal', 'click_parentname')}
+          required
+        />
+        <Input
+          placeholder="Имя ребенка"
+          value={childFirstName}
+          onChange={e => setChildFirstName(e.target.value)}
+          required
+        />
+        <Input
+          placeholder="Фамилия ребенка"
+          value={childLastName}
+          onChange={e => setChildLastName(e.target.value)}
+          required
+        />
         <Tooltip
           content="Введите дату рождения, чтобы увидеть доступные варианты"
           placement="top"

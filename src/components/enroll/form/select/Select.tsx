@@ -117,7 +117,7 @@ const Select: FunctionComponent<ISelectProps> = ({
               </Options>
             )}
             <NotFound onClick={() => select(CALLBACK)}>
-              Нет подходящего, позвоните
+              Дата не подходит, перезвоните мне
             </NotFound>
           </Popup>
         )}
