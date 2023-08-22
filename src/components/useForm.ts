@@ -144,7 +144,10 @@ export function useForm({
 
       let isSuccess = false;
 
-      if (!executeRecaptcha) return isSuccess;
+      if (!executeRecaptcha) {
+        alert('captcha error');
+        return isSuccess;
+      }
 
       setIsPending(true);
 
