@@ -145,6 +145,7 @@ export function useForm({
       let isSuccess = false;
 
       if (!executeRecaptcha) {
+        // @hardcode
         alert('captcha error');
         return isSuccess;
       }
