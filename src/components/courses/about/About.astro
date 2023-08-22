@@ -63,16 +63,15 @@ import hero3 from './hero3.svg';
       </div>
     </div>
   </div>
-  <a
-    class="button"
-    href="#form-enroll"
-    onClick={event => {
-      ym('reachGoal', 'click_button2');
-    }}
-  >
-    Записаться бесплатно
-  </a>
+  <a class="button" id="button2" href="#form-enroll">Записаться бесплатно</a>
 </div>
+
+<script>
+  const button = document.getElementById('button2');
+  button.addEventListener('click', () => {
+    window.ym(93302549, 'reachGoal', 'click_button2');
+  });
+</script>
 
 <style lang="scss">
   .courses {

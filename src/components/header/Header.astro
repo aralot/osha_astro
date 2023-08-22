@@ -51,7 +51,7 @@ import backgroundMobile from './background.mobile.webp';
         Старт — <span id="start-at-value"></span>
       </div>
       <div class="enroll">
-        <a href="#form-enroll" class="enroll-button">Записаться</a>
+        <a id="button1" href="#form-enroll" class="enroll-button">Записаться</a>
         <div class="enroll-price">
           <div class="enroll-by">за</div>
           <div class="enroll-free">0₽</div>
@@ -92,6 +92,11 @@ import backgroundMobile from './background.mobile.webp';
 
   const startAtValue = document.getElementById('start-at-value');
   startAtValue.innerHTML = getStartAtValue();
+
+  const button = document.getElementById('button1');
+  button.addEventListener('click', () => {
+    window.ym(93302549, 'reachGoal', 'click_button1');
+  });
 </script>
 
 <style lang="scss">

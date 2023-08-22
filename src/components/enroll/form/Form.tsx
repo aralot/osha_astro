@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import ym from 'react-yandex-metrika';
 
 import { useForm, LOCALE, TIME_ZONE, CALL_ME } from '../../useForm';
+import { reachGoal } from '../../yandexMetrikaWrapper';
 import ResultPopup from '../../resultPopup';
 import { Input, Tooltip } from '../../ui-kit';
 
@@ -109,14 +109,14 @@ const Form: FunctionComponent = ({ isLight }) => {
               setTimeSlotValue('');
               setChildBirthDate(e.target.value);
             }}
-            onFocus={() => ym('reachGoal', 'click_birthday')}
+            onFocus={() => reachGoal('click_birthday')}
           />
         </WithIconCalendar>
         <Input
           placeholder="Имя родителя"
           value={parentName}
           onChange={e => setParentName(e.target.value)}
-          onFocus={() => ym('reachGoal', 'click_parentname')}
+          onFocus={() => reachGoal('click_parentname')}
           required
         />
         <Input
@@ -156,7 +156,7 @@ const Form: FunctionComponent = ({ isLight }) => {
                       : '',
                   );
                 }}
-                onFocus={() => ym('reachGoal', 'click_startdate')}
+                onFocus={() => reachGoal('click_startdate')}
               />
 
               <Select
@@ -168,7 +168,7 @@ const Form: FunctionComponent = ({ isLight }) => {
                   setTimeSlotValue(value);
                   if (!value) setDateSlotValue('');
                 }}
-                onFocus={() => ym('reachGoal', 'click_starttime')}
+                onFocus={() => reachGoal('click_starttime')}
                 isTwoColumn
               />
             </Grid>
@@ -177,7 +177,7 @@ const Form: FunctionComponent = ({ isLight }) => {
         <PhoneInput
           value={phone}
           onChange={setPhone}
-          onFocus={() => ym('reachGoal', 'click_phone')}
+          onFocus={() => reachGoal('click_phone')}
           placeholder="+7 (999) 999-99-99"
           label=""
         />
