@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Providers from '../../Providers';
+import WithApi from '../../WithApi';
 
 import Form from './Form';
 
 export default () => {
   return (
-    <Providers>
+    <WithApi>
       <Form />
-    </Providers>
+    </WithApi>
   );
 };

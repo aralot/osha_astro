@@ -5,7 +5,6 @@ import {
   fetchBaseQuery,
   ApiProvider,
 } from '@reduxjs/toolkit/query/react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import ym from 'react-yandex-metrika';
 
 import { usePopup } from './usePopup';
@@ -126,14 +125,21 @@ export function useForm({
     return slots;
   }, [data, getDateRangeLabel]);
 
-  const { executeRecaptcha } = useGoogleReCaptcha();
-
   const [createOnlineBookingMutation, { isSuccess }] =
     api.useCreateOnlineBookingMutation();
 
   const [isPending, setIsPending] = useState(false);
 
   const { closePopup, isPopupVisible, openPopup } = usePopup();
+
+  //   useEffect(() => {
+  //     if (window.GRECAPTCHA_TOKEN === undefined) {
+  //       setIsPending(true);
+  //       return;
+  //     }
+  //
+  //     setIsPending(false);
+  //   }, [window.GRECAPTCHA_TOKEN]);
 
   const onSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
@@ -144,17 +150,15 @@ export function useForm({
 
       let isSuccess = false;
 
-      if (!executeRecaptcha) {
-        // @hardcode
-        alert('captcha error');
+      if (window.GRECAPTCHA_TOKEN === undefined) {
+        console.error('Captcha script is not loaded yet!');
         return isSuccess;
       }
 
       setIsPending(true);
 
       try {
-        const reCaptchaToken = await executeRecaptcha('online_booking');
-        if (reCaptchaToken) {
+        if (window.GRECAPTCHA_TOKEN) {
           let crmPipeline = 'pipeline__autobooking_mini';
           let crmStatus =
             timeSlotValue && timeSlotValue !== CALLBACK
@@ -184,7 +188,7 @@ export function useForm({
             meta,
             parentName: parentName || 'noname',
             phone,
-            reCaptchaToken,
+            reCaptchaToken: GRECAPTCHA_TOKEN,
           };
 
           if (timeSlotValue && timeSlotValue !== CALLBACK) {
@@ -228,7 +232,6 @@ export function useForm({
       childFirstName,
       childLastName,
       email,
-      executeRecaptcha,
       isFooter,
       isLight,
       //      openPopup,

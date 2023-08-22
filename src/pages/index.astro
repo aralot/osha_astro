@@ -8,6 +8,7 @@ import Teachers from '../components/teachers';
 import Reviews from '../components/reviews';
 import Faq from '../components/faq';
 import Footer from '../components/footer';
+import YandexMetrika from '../components/YandexMetrika';
 ---
 
 <Layout title="Мини-курсы по программированию для детей 8-17 лет">
@@ -22,7 +23,25 @@ import Footer from '../components/footer';
     <Faq client:only="react" />
   </div>
   <Footer />
+  <YandexMetrika client:only="react" />
 </Layout>
+
+<script>
+  // Google reCaptcha
+  const KEY = '6LdK_RclAAAAADApWB10Y1ClEYT6KEL0XkCLNZRv';
+  const script = document.createElement('script');
+  script.src = 'https://www.google.com/recaptcha/api.js?render=' + KEY;
+  script.addEventListener('load', () => {
+    window.grecaptcha.ready(() => {
+      window.grecaptcha
+        .execute(KEY, { action: 'online_booking' })
+        .then(token => {
+          window.GRECAPTCHA_TOKEN = token;
+        });
+    });
+  });
+  document.body.appendChild(script);
+</script>
 
 <style lang="scss">
   .content {
