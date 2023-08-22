@@ -23,7 +23,7 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
-import { CALLBACK } from '../../../useForm';
+import { CALL_ME } from '../../../useForm';
 
 const Select: FunctionComponent<ISelectProps> = ({
   isDisabled,
@@ -68,7 +68,7 @@ const Select: FunctionComponent<ISelectProps> = ({
       return selectedOption.label;
     }
 
-    if (value === CALLBACK) return 'Перезвоните';
+    if (value === CALL_ME) return 'Перезвоните';
     return placeholder;
   };
 
@@ -116,7 +116,7 @@ const Select: FunctionComponent<ISelectProps> = ({
                 ))}
               </Options>
             )}
-            <NotFound onClick={() => select(CALLBACK)}>
+            <NotFound onClick={() => select(CALL_ME)}>
               Дата не подходит, перезвоните мне
             </NotFound>
           </Popup>

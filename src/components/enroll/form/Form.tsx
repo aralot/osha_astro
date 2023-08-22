@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import ym from 'react-yandex-metrika';
 
-import { useForm, LOCALE, TIME_ZONE, CALLBACK } from '../../useForm';
+import { useForm, LOCALE, TIME_ZONE, CALL_ME } from '../../useForm';
 import ResultPopup from '../../resultPopup';
 import { Input, Tooltip } from '../../ui-kit';
 
@@ -149,7 +149,7 @@ const Form: FunctionComponent = ({ isLight }) => {
                 onChange={value => {
                   setDateSlotValue(value);
                   setTimeSlotValue(
-                    value === CALLBACK
+                    value === CALL_ME
                       ? ''
                       : timeSlots.length
                       ? timeSlots[0].value
@@ -163,7 +163,7 @@ const Form: FunctionComponent = ({ isLight }) => {
                 placeholder="Время курса"
                 options={timeSlots}
                 value={timeSlotValue}
-                isDisabled={!timeSlots.length || dateSlotValue === CALLBACK}
+                isDisabled={!timeSlots.length || dateSlotValue === CALL_ME}
                 onChange={value => {
                   setTimeSlotValue(value);
                   if (!value) setDateSlotValue('');

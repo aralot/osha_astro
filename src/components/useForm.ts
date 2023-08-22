@@ -11,7 +11,7 @@ import { usePopup } from './usePopup';
 
 const BRANCH_CODE = 'OSA-autobooking';
 export const BRANCH_CODE_INDONESIA = 'Indonesia-autobooking';
-export const CALLBACK = 'callback';
+export const CALL_ME = 'callback';
 
 interface IParams {
   branchCode?: string;
@@ -151,14 +151,14 @@ export function useForm({
 
   const { closePopup, isPopupVisible, openPopup } = usePopup();
 
-  //   useEffect(() => {
-  //     if (window.GRECAPTCHA_TOKEN === undefined) {
-  //       setIsPending(true);
-  //       return;
-  //     }
-  //
-  //     setIsPending(false);
-  //   }, [window.GRECAPTCHA_TOKEN]);
+  useEffect(() => {
+    if (window.GRECAPTCHA_TOKEN === undefined) {
+      setIsPending(true);
+      return;
+    }
+
+    setIsPending(false);
+  }, [window.GRECAPTCHA_TOKEN]);
 
   const onSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
@@ -180,7 +180,7 @@ export function useForm({
         if (window.GRECAPTCHA_TOKEN) {
           let crmPipeline = 'pipeline__autobooking_mini';
           let crmStatus =
-            timeSlotValue && timeSlotValue !== CALLBACK
+            timeSlotValue && timeSlotValue !== CALL_ME
               ? 'group_sign'
               : 'autobooking_no_time';
           let meta = Object.fromEntries(
@@ -210,7 +210,7 @@ export function useForm({
             reCaptchaToken: GRECAPTCHA_TOKEN,
           };
 
-          if (timeSlotValue && timeSlotValue !== CALLBACK) {
+          if (timeSlotValue && timeSlotValue !== CALL_ME) {
             payload.startTime = timeSlotValue;
           }
 
@@ -237,6 +237,8 @@ export function useForm({
       } catch (e) {
         console.error(e);
         refetchSlots();
+        setDateSlotValue('');
+        setTimeSlotValue('');
       }
       openPopup();
       setIsPending(false);
@@ -253,7 +255,7 @@ export function useForm({
       email,
       isFooter,
       isLight,
-      //      openPopup,
+      openPopup,
       parentName,
       phone,
       timeSlotValue,
