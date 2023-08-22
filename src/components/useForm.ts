@@ -19,6 +19,25 @@ interface IParams {
   isLight?: boolean;
 }
 
+export const TIME_ZONE = 'Europe/Moscow';
+export const LOCALE = 'ru';
+const THREE_DAY_MS = 60 * 60 * 24 * 3 * 1000;
+
+const formatDateWithDay = (date: Date) => {
+  const formattedDate = new Intl.DateTimeFormat(LOCALE, {
+    day: 'numeric',
+    month: 'numeric',
+    timeZone: TIME_ZONE,
+  }).format(date);
+
+  const formattedDay = new Intl.DateTimeFormat(LOCALE, {
+    timeZone: TIME_ZONE,
+    weekday: 'short',
+  }).format(date);
+
+  return `${formattedDate} (${formattedDay.toLowerCase()})`;
+};
+
 const getDateRangeLabel = (date: Date) => {
   const from = formatDateWithDay(date);
   const to = formatDateWithDay(new Date(date.getTime() + THREE_DAY_MS));

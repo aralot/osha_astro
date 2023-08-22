@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import ym from 'react-yandex-metrika';
 
-import { useForm, CALLBACK } from '../../useForm';
+import { useForm, LOCALE, TIME_ZONE, CALLBACK } from '../../useForm';
 import ResultPopup from '../../resultPopup';
 import { Input, Tooltip } from '../../ui-kit';
 
@@ -21,25 +21,6 @@ import {
   WithIconCalendar,
 } from './styles';
 import Select from './select';
-
-const TIME_ZONE = 'Europe/Moscow';
-const LOCALE = 'ru';
-const THREE_DAY_MS = 60 * 60 * 24 * 3 * 1000;
-
-const formatDateWithDay = (date: Date) => {
-  const formattedDate = new Intl.DateTimeFormat(LOCALE, {
-    day: 'numeric',
-    month: 'numeric',
-    timeZone: TIME_ZONE,
-  }).format(date);
-
-  const formattedDay = new Intl.DateTimeFormat(LOCALE, {
-    timeZone: TIME_ZONE,
-    weekday: 'short',
-  }).format(date);
-
-  return `${formattedDate} (${formattedDay.toLowerCase()})`;
-};
 
 const Form: FunctionComponent = ({ isLight }) => {
   // @hardcode
