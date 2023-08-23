@@ -151,15 +151,6 @@ export function useForm({
 
   const { closePopup, isPopupVisible, openPopup } = usePopup();
 
-  useEffect(() => {
-    if (window.GRECAPTCHA_TOKEN === undefined) {
-      setIsPending(true);
-      return;
-    }
-
-    setIsPending(false);
-  }, [window.GRECAPTCHA_TOKEN]);
-
   const onSubmit = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       if (event) {

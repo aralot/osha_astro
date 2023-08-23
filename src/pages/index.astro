@@ -28,7 +28,7 @@ import Footer from '../components/footer';
   // Google reCaptcha
   const KEY = '6LdK_RclAAAAADApWB10Y1ClEYT6KEL0XkCLNZRv';
   const script = document.createElement('script');
-  script.src = 'https://www.google.com/recaptcha/api.js?render=' + KEY;
+  script.async = 1;
   script.addEventListener('load', () => {
     window.grecaptcha.ready(() => {
       window.grecaptcha
@@ -38,6 +38,7 @@ import Footer from '../components/footer';
         });
     });
   });
+  script.src = 'https://www.google.com/recaptcha/api.js?render=' + KEY;
   document.body.appendChild(script);
 </script>
 
