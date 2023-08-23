@@ -46,6 +46,7 @@ const Certificates: FunctionComponent = () => {
           key={index}
           $isCurrent={index === currentSlideIndex}
           $src={url}
+          loading="lazy"
         />
       ))}
       <ButtonLeft onClick={goToPrev}>
