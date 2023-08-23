@@ -13,6 +13,7 @@ import {
   Emoji,
   Slider,
   Slide,
+  SlideImage,
   Stars,
   Star,
   SlideViewFull,
@@ -55,11 +56,8 @@ const Reviews: FunctionComponent = () => {
       </Head>
       <Slider ref={sliderRef}>
         {reviews.map((item, index) => (
-          <Slide
-            key={index}
-            $bgImage={item.photo}
-            onClick={() => openPreview(item)}
-          >
+          <Slide key={index} onClick={() => openPreview(item)}>
+            <SlideImage src={item.photo} loading="lazy" />
             <Stars>
               {[1, 2, 3, 4, 5].map(val => (
                 <Star key={val} $isActive={val <= item.rating} />

@@ -97,16 +97,23 @@ export const Slider = styled.div`
   }
 `;
 
-export const Slide = styled.div<{ $bgImage: string }>`
+export const Slide = styled.div`
   position: relative;
   width: 272px;
   height: 400px;
   flex-shrink: 0;
   border-radius: 24px;
-  background: url('${({ $bgImage }) => $bgImage}') no-repeat center;
-  background-size: cover;
   scroll-snap-align: start;
   cursor: pointer;
+`;
+
+export const SlideImage = styled.img`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  border-radius: 24px;
 `;
 
 export const Stars = styled.div`
