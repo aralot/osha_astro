@@ -102,16 +102,15 @@ export const Slide = styled.div`
   }
 `;
 
-export const SlideHead = styled.div<{ $bgColor: string; $bgImg: string }>`
+export const SlideHead = styled.div<{ $bgColor: string }>`
   position: relative;
   height: ${SLIDE_HEIGHT_HEAD_MOBILE}px;
   padding: 24px 20px 0;
 
   border-radius: 16px 16px 0 0;
 
-  ${({ $bgColor, $bgImg }) => css`
-    background: ${$bgColor} url('${$bgImg}') no-repeat 50px bottom;
-    background-size: contain;
+  ${({ $bgColor }) => css`
+    background-color: ${$bgColor};
   `};
 
   @media (min-width: 1200px) {
@@ -121,6 +120,15 @@ export const SlideHead = styled.div<{ $bgColor: string; $bgImg: string }>`
     border-radius: 20px 20px 0 0;
     background-position: right bottom;
   }
+`;
+
+export const SlideImage = styled.img`
+  position: absolute;
+  bottom: 0;
+  right: -104px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const SlideHeadTitle = styled.div`

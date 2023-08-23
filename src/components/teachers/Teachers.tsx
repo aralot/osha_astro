@@ -17,6 +17,7 @@ import {
   SlideHead,
   SlideHeadLabel,
   SlideHeadTitle,
+  SlideImage,
   Slider,
   Title,
 } from './styles';
@@ -45,6 +46,7 @@ const Teachers: FunctionComponent = () => {
       <Slider ref={sliderRef}>
         <Slide>
           <SlideHead $bgColor="#e6ffe2" $bgImg={photo1}>
+            <SlideImage src={photo1} loading="lazy" />
             <SlideHeadTitle>Сергей Козлов</SlideHeadTitle>
             <SlideHeadLabel>Преподает 5 лет</SlideHeadLabel>
             <SlideBadges>
@@ -73,6 +75,7 @@ const Teachers: FunctionComponent = () => {
         </Slide>
         <Slide>
           <SlideHead $bgColor="#edf7ff" $bgImg={photo2}>
+            <SlideImage src={photo2} loading="lazy" />
             <SlideHeadTitle>Альбина Анисимова</SlideHeadTitle>
             <SlideHeadLabel>Преподает 7 лет</SlideHeadLabel>
             <SlideBadges>
@@ -101,6 +104,7 @@ const Teachers: FunctionComponent = () => {
         </Slide>
         <Slide>
           <SlideHead $bgColor="#fffadc" $bgImg={photo3}>
+            <SlideImage src={photo3} loading="lazy" />
             <SlideHeadTitle>Анастасия Борисова</SlideHeadTitle>
             <SlideHeadLabel>Преподает 4 года</SlideHeadLabel>
             <SlideBadges>
@@ -128,6 +132,7 @@ const Teachers: FunctionComponent = () => {
         </Slide>
         <Slide>
           <SlideHead $bgColor="#e6ffe2" $bgImg={photo4}>
+            <SlideImage src={photo4} loading="lazy" />
             <SlideHeadTitle>Елизавета Рыжова</SlideHeadTitle>
             <SlideHeadLabel>Преподает 5 лет</SlideHeadLabel>
             <SlideBadges>
@@ -156,6 +161,7 @@ const Teachers: FunctionComponent = () => {
         </Slide>
         <Slide>
           <SlideHead $bgColor="#f5e2fe" $bgImg={photo5}>
+            <SlideImage src={photo5} loading="lazy" />
             <SlideHeadTitle>Джамиль Мухутдинов</SlideHeadTitle>
             <SlideHeadLabel>Преподает 5 лет</SlideHeadLabel>
             <SlideBadges>
