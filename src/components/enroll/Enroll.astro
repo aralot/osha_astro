@@ -18,6 +18,7 @@ const { isLight } = Astro.props;
         class="background"
         srcset={`${backgroundMobile} 840w, ${background} 1680w`}
         src={background}
+        loading="lazy"
       />
     )
   }

@@ -13,8 +13,11 @@ import tgIcon from './tg.svg';
 <div class="container">
   <div class="grid">
     <div class="logo">
-      <img src={logo} />
-      <img src={logo2} class="is-mobile" />
+      <picture>
+        <source srcset={logo} media="(min-width: 1200px)" />
+        <source srcset={logo2} />
+        <img src="logo2" loading="lazy" />
+      </picture>
     </div>
     <div class="contacts">
       <div class="socials">
@@ -102,11 +105,6 @@ import tgIcon from './tg.svg';
 
     img {
       width: 100%;
-      display: none;
-
-      &.is-mobile {
-        display: inline;
-      }
     }
 
     @media (min-width: 1200px) {
@@ -114,14 +112,6 @@ import tgIcon from './tg.svg';
       margin-top: -48px;
       width: 278px;
       height: 188px;
-
-      img {
-        display: inline;
-
-        &.is-mobile {
-          display: none;
-        }
-      }
     }
   }
 
