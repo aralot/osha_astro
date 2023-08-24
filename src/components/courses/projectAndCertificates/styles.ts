@@ -140,13 +140,6 @@ export const BadgeCertificate = styled.div`
   }
 `;
 
-export const Project = styled.div`
-  position: relative;
-  padding-bottom: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 24px;
-`;
-
 export const ProjectIframe = styled.iframe`
   position: absolute;
   left: 0;

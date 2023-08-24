@@ -8,6 +8,14 @@ import Learn from './learn';
 <div>
   <Mini />
   <About />
-  <ProjectAndCertificates client:only="react" />
+  <div class="project-and-certificates">
+    <ProjectAndCertificates client:only="react" />
+  </div>
   <Learn />
 </div>
+
+<style lang="scss">
+  .project-and-certificates {
+    height: 772px;
+  }
+</style>
