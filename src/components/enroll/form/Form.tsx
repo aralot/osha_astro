@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, useMemo, useState } from 'react';
 
 import { useForm, LOCALE, TIME_ZONE, CALL_ME } from '../../useForm';
 import { reachGoal } from '../../yandexMetrikaWrapper';
@@ -75,6 +75,8 @@ const Form: FunctionComponent = ({ isLight }) => {
       value: value,
     }));
   }, [groupedSlots, dateSlotValue]);
+
+  const [isCallMeSelected, setIsCallMeSelected] = useState(false);
 
   return (
     <>
@@ -169,6 +171,7 @@ const Form: FunctionComponent = ({ isLight }) => {
                       ? timeSlots[0].value
                       : '',
                   );
+                  setIsCallMeSelected(value === CALL_ME);
                 }}
                 onFocus={() => reachGoal('click_startdate')}
               />
@@ -181,6 +184,7 @@ const Form: FunctionComponent = ({ isLight }) => {
                 onChange={value => {
                   setTimeSlotValue(value);
                   if (!value) setDateSlotValue('');
+                  setIsCallMeSelected(value === CALL_ME);
                 }}
                 onFocus={() => reachGoal('click_starttime')}
                 isTwoColumn
@@ -212,7 +216,7 @@ const Form: FunctionComponent = ({ isLight }) => {
 
         <div>
           <Button type="submit" disabled={isPending}>
-            Записаться
+            {isCallMeSelected ? 'Заказать обратный звонок' : 'Записаться'}
           </Button>
           <Agreement $isLight={isLight}>
             Продолжая, я соглашаюсь с положением{' '}

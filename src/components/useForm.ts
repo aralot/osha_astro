@@ -264,6 +264,16 @@ export function useForm({
 
           await createOnlineBookingMutation(payload).unwrap();
           isSuccess = true;
+
+          // reset form
+          setDateSlotValue('');
+          setTimeSlotValue('');
+          setParentName('');
+          setChildFirstName('');
+          setChildLastName('');
+          setPhone('');
+          setEmail('');
+          setChildBirthDate(null);
         }
       } catch (e) {
         console.error(e);
