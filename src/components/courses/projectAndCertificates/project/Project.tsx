@@ -12,15 +12,12 @@ const Project: FunctionComponent = ({}) => {
 
   const onLoad = useCallback(() => {
     if (iframeRef.current) {
-      requestIdleCallback(
-        () => {
-          iframeRef.current.onload = event => {
-            event.target.style.opacity = 1;
-          };
-          iframeRef.current.src = IFRAME_SRC;
-        },
-        { timeout: 3000 },
-      );
+      setTimeout(() => {
+        iframeRef.current.onload = event => {
+          event.target.style.opacity = 1;
+        };
+        iframeRef.current.src = IFRAME_SRC;
+      }, 5000);
     }
   }, [iframeRef]);
 

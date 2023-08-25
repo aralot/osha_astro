@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/partytown": "^1.2.3",
     "@astrojs/react": "^2.2.1",
     "@floating-ui/react": "0.18.1",
     "@reduxjs/toolkit": "^1.9.5",
