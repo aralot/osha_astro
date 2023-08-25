@@ -25,7 +25,7 @@ const Form: FunctionComponent = ({}) => {
     setEmail,
     setParentName,
     setPhone,
-  } = useForm({});
+  } = useForm({ isFooter: true });
 
   return (
     <Wrapper onSubmit={onSubmit}>

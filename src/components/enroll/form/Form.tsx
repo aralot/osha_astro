@@ -52,7 +52,7 @@ const Form: FunctionComponent = ({ isLight }) => {
     setPhone,
     setTimeSlotValue,
     timeSlotValue,
-  } = useForm({ isLight });
+  } = useForm({ isLight: Boolean(isLight) });
 
   const dateSlots = useMemo(() => {
     return [
