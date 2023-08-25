@@ -112,6 +112,7 @@ const Form: FunctionComponent = ({ isLight }) => {
               setChildBirthDate(e.target.value);
             }}
             onFocus={() => {
+              loadReCaptchaSource();
               reachGoal('click_birthday');
             }}
           />
@@ -120,18 +121,27 @@ const Form: FunctionComponent = ({ isLight }) => {
           placeholder="Имя родителя"
           value={parentName}
           onChange={e => setParentName(e.target.value)}
-          onFocus={() => reachGoal('click_parentname')}
+          onFocus={() => {
+            loadReCaptchaSource();
+            reachGoal('click_parentname');
+          }}
           required
         />
         <Input
           placeholder="Имя ребенка"
           value={childFirstName}
+          onFocus={() => {
+            loadReCaptchaSource();
+          }}
           onChange={e => setChildFirstName(e.target.value)}
           required
         />
         <Input
           placeholder="Фамилия ребенка"
           value={childLastName}
+          onFocus={() => {
+            loadReCaptchaSource();
+          }}
           onChange={e => setChildLastName(e.target.value)}
           required
         />
@@ -181,7 +191,10 @@ const Form: FunctionComponent = ({ isLight }) => {
         <PhoneInput
           value={phone}
           onChange={setPhone}
-          onFocus={() => reachGoal('click_phone')}
+          onFocus={() => {
+            loadReCaptchaSource();
+            reachGoal('click_phone');
+          }}
           placeholder="+7 (999) 999-99-99"
           label=""
         />

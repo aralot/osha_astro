@@ -7,6 +7,7 @@ import { PhoneInput } from '../../ui-kit/phoneInput/PhoneInput';
 
 import { useForm } from '../../useForm';
 import ResultPopup from '../../resultPopup';
+import { loadReCaptchaSource } from '../../googleReCaptchaWrapper';
 
 import { Wrapper, Button } from './styles';
 
@@ -26,6 +27,9 @@ const Form: FunctionComponent = ({}) => {
       <PhoneInput
         value={phone}
         onChange={setPhone}
+        onFocus={() => {
+          loadReCaptchaSource();
+        }}
         placeholder="+7 (999) 999-99-99"
         label=""
       />

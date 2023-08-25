@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { Input } from '../../ui-kit';
 import { useForm } from '../../useForm';
 import ResultPopup from '../../resultPopup';
+import { loadReCaptchaSource } from '../../googleReCaptchaWrapper';
 
 // importing of "PhoneInput" from "ui-kit" produces strange build error:
 // > Export "PhoneInput" of module "src/components/ui-kit/phoneInput/PhoneInput.tsx" was reexported through module "src/components/ui-kit/phoneInput/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
@@ -32,11 +33,17 @@ const Form: FunctionComponent = ({}) => {
         placeholder="Имя"
         value={parentName}
         onChange={e => setParentName(e.target.value)}
+        onFocus={() => {
+          loadReCaptchaSource();
+        }}
         required
       />
       <PhoneInput
         value={phone}
         onChange={setPhone}
+        onFocus={() => {
+          loadReCaptchaSource();
+        }}
         placeholder="+7 (999) 999-99-99"
         label=""
       />
@@ -44,6 +51,9 @@ const Form: FunctionComponent = ({}) => {
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
+        onFocus={() => {
+          loadReCaptchaSource();
+        }}
         placeholder="E-mail"
         required
       />
