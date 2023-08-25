@@ -4,6 +4,7 @@ import { useForm, LOCALE, TIME_ZONE, CALL_ME } from '../../useForm';
 import { reachGoal } from '../../yandexMetrikaWrapper';
 import ResultPopup from '../../resultPopup';
 import { Input, Tooltip } from '../../ui-kit';
+import { loadReCaptchaSource } from '../../googleReCaptchaWrapper';
 
 // importing of "PhoneInput" from "ui-kit" produces strange build error:
 // > Export "PhoneInput" of module "src/components/ui-kit/phoneInput/PhoneInput.tsx" was reexported through module "src/components/ui-kit/phoneInput/index.ts" while both modules are dependencies of each other and will end up in different chunks by current Rollup settings. This scenario is not well supported at the moment as it will produce a circular dependency between chunks and will likely lead to broken execution order.
@@ -30,6 +31,7 @@ const Form: FunctionComponent = ({ isLight }) => {
   const {
     childBirthDate,
     childFirstName,
+
     childLastName,
     closePopup,
     dateSlotValue,
@@ -109,7 +111,9 @@ const Form: FunctionComponent = ({ isLight }) => {
               setTimeSlotValue('');
               setChildBirthDate(e.target.value);
             }}
-            onFocus={() => reachGoal('click_birthday')}
+            onFocus={() => {
+              reachGoal('click_birthday');
+            }}
           />
         </WithIconCalendar>
         <Input
@@ -187,6 +191,9 @@ const Form: FunctionComponent = ({ isLight }) => {
           value={email}
           onChange={e => setEmail(e.target.value)}
           placeholder="E-mail"
+          onFocus={() => {
+            loadReCaptchaSource();
+          }}
           required
         />
 

@@ -49,23 +49,22 @@ import Footer from '../components/footer';
 </script>
 <!-- /Yandex.Metrika counter -->
 
-<script type="text/partytown">
+<script>
   // Google reCaptcha
-  // const KEY = '6LdK_RclAAAAADApWB10Y1ClEYT6KEL0XkCLNZRv';
-  const KEY = '6Leaf9MnAAAAAOZj3XnizU7CMfQavz842_XhVAOz';
-  const script = document.createElement('script');
-  script.async = 1;
-  script.addEventListener('load', () => {
-    window.grecaptcha.ready(() => {
-      window.grecaptcha
-        .execute(KEY, { action: 'online_booking' })
-        .then(token => {
-          window.GRECAPTCHA_TOKEN = token;
-        });
-    });
-  });
-  script.src = 'https://www.google.com/recaptcha/api.js?render=' + KEY;
-  document.body.appendChild(script);
+  //   const KEY = '6LdK_RclAAAAADApWB10Y1ClEYT6KEL0XkCLNZRv';
+  //   const script = document.createElement('script');
+  //   script.async = 1;
+  //   script.addEventListener('load', () => {
+  //     window.grecaptcha.ready(() => {
+  //       window.grecaptcha
+  //         .execute(KEY, { action: 'online_booking' })
+  //         .then(token => {
+  //           window.GRECAPTCHA_TOKEN = token;
+  //         });
+  //     });
+  //   });
+  //   script.src = 'https://www.google.com/recaptcha/api.js?render=' + KEY;
+  //   document.body.appendChild(script);
 </script>
 
 <style lang="scss">

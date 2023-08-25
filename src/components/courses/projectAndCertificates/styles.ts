@@ -139,14 +139,3 @@ export const BadgeCertificate = styled.div`
     line-height: 29px;
   }
 `;
-
-export const ProjectIframe = styled.iframe`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 24px;
-  overflow: hidden;
-`;

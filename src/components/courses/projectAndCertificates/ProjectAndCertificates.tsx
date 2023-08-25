@@ -7,7 +7,6 @@ import {
   Grid,
   BadgeProject,
   BadgeCertificate,
-  ProjectIframe,
 } from './styles';
 
 const ProjectAndCertificates = () => {

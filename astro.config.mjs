@@ -7,7 +7,7 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   integrations: [react(), partytown({
     config: {
-      forward: ['grecaptcha','ym']
+      forward: ['ym']
     }
   })]
 });

@@ -7,6 +7,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 import { usePopup } from './usePopup';
+import { loadReCaptchaSource, KEY } from './googleReCaptchaWrapper';
 import { reachGoal } from './yandexMetrikaWrapper';
 
 const BRANCH_CODE = 'OSA-autobooking';
@@ -160,15 +161,13 @@ export function useForm({
 
       let isSuccess = false;
 
-      if (window.GRECAPTCHA_TOKEN === undefined) {
-        console.error('Captcha script is not loaded yet!');
-        return isSuccess;
-      }
-
       setIsPending(true);
 
+      await loadReCaptchaSource();
+      const reCaptchaToken = await window.grecaptcha.execute(KEY, { action: 'online_booking' });
+
       try {
-        if (window.GRECAPTCHA_TOKEN) {
+        if (reCaptchaToken) {
           let crmPipeline = 'pipeline__autobooking_mini';
           let crmStatus =
             timeSlotValue && timeSlotValue !== CALL_ME
@@ -198,7 +197,7 @@ export function useForm({
             meta,
             parentName: parentName || 'noname',
             phone,
-            reCaptchaToken: GRECAPTCHA_TOKEN,
+            reCaptchaToken,
           };
 
           if (timeSlotValue && timeSlotValue !== CALL_ME) {
