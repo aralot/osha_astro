@@ -125,10 +125,14 @@ export const SlideHead = styled.div<{ $bgColor: string }>`
 export const SlideImage = styled.img`
   position: absolute;
   bottom: 0;
-  right: -104px;
   width: 100%;
-  height: 100%;
   object-fit: contain;
+  right: -50px;
+
+  @media (min-width: 1200px) {
+    height: 100%;
+    right: -104px;
+  }
 `;
 
 export const SlideHeadTitle = styled.div`
