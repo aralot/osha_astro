@@ -6,12 +6,13 @@ import Form from './form';
 
 import background from './background.webp';
 import backgroundMobile from './background.mobile.webp';
+import backgroundMobileSmall from './background.mobile.750.webp';
 ---
 
 <div class="container">
   <img
     class="background"
-    srcset={`${backgroundMobile} 1141w, ${background} 2282w`}
+    srcset={`${backgroundMobileSmall} 750w, ${backgroundMobile} 1141w, ${background} 2282w`}
     src={background}
   />
 

@@ -78,45 +78,6 @@ export const api = createApi({
         url: 'online-booking/list',
       }),
       transformResponse: result => result.data,
-      // @hardcode
-      // transformResponse: () => {
-      //   return {
-      //     items: [
-      //       {
-      //         groupTitle: 'MK 12.08.2023 09.00-10.00 OB',
-      //         groupStartTime: '2023-08-12T09:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 10.00-11.00 Shinta',
-      //         groupStartTime: '2023-08-12T10:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 12.00-13.00 Juan',
-      //         groupStartTime: '2023-08-12T12:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 13.00-14.00 Nana',
-      //         groupStartTime: '2023-08-12T13:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 15.00-16.00 Harvey',
-      //         groupStartTime: '2023-08-12T15:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 17.00-18.00 OB',
-      //         groupStartTime: '2023-08-12T17:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 19.00-20.00 OB',
-      //         groupStartTime: '2023-08-12T19:00:00+07:00',
-      //       },
-      //       {
-      //         groupTitle: 'MK 12.08.2023 20.00-21.00 Tia',
-      //         groupStartTime: '2023-08-12T20:00:00+07:00',
-      //       },
-      //     ],
-      //   };
-      // },
     }),
   }),
 });
@@ -155,15 +116,6 @@ export function useForm({
         }
       : skipToken,
   );
-
-  useEffect(() => {
-    if (data?.items.length === 1) {
-      const startAt = data.items[0].groupStartTime;
-      const date = new Date(startAt);
-      setDateSlotValue(getDateRangeLabel(date));
-      setTimeSlotValue(startAt);
-    }
-  }, [data?.items, getDateRangeLabel]);
 
   const groupedSlots = useMemo(() => {
     const slots = new Map<string, string[]>();

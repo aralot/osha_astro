@@ -31,7 +31,6 @@ const Form: FunctionComponent = ({ isLight }) => {
   const {
     childBirthDate,
     childFirstName,
-
     childLastName,
     closePopup,
     dateSlotValue,
