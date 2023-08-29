@@ -19,5 +19,13 @@ export const PhoneInput: FunctionComponent = () => {
     });
   }, []);
 
-  return <Input inputRef={phoneInputRef} type="tel" required />;
+  return (
+    <Input
+      inputRef={phoneInputRef}
+      autocomplete="on"
+      type="tel"
+      name="phone"
+      required
+    />
+  );
 };
