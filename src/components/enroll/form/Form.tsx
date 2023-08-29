@@ -75,8 +75,6 @@ const Form: FunctionComponent = ({ isLight }) => {
     }));
   }, [groupedSlots, dateSlotValue]);
 
-  const [isCallMeSelected, setIsCallMeSelected] = useState(false);
-
   return (
     <>
       <StyledForm onSubmit={onSubmit}>
@@ -170,7 +168,6 @@ const Form: FunctionComponent = ({ isLight }) => {
                       ? timeSlots[0].value
                       : '',
                   );
-                  setIsCallMeSelected(value === CALL_ME);
                 }}
                 onFocus={() => reachGoal('click_startdate')}
               />
@@ -183,7 +180,6 @@ const Form: FunctionComponent = ({ isLight }) => {
                 onChange={value => {
                   setTimeSlotValue(value);
                   if (!value) setDateSlotValue('');
-                  setIsCallMeSelected(value === CALL_ME);
                 }}
                 onFocus={() => reachGoal('click_starttime')}
                 isTwoColumn
@@ -215,7 +211,9 @@ const Form: FunctionComponent = ({ isLight }) => {
 
         <div>
           <Button type="submit" disabled={isPending}>
-            {isCallMeSelected ? 'Заказать обратный звонок' : 'Записаться'}
+            {dateSlotValue === CALL_ME || timeSlotValue === CALL_ME
+              ? 'Заказать обратный звонок'
+              : 'Записаться'}
           </Button>
           <Agreement $isLight={isLight}>
             Продолжая, я соглашаюсь с положением{' '}
