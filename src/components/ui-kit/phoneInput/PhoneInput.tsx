@@ -1,71 +1,23 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useRef, useEffect } from 'react';
+import intlTelInput from 'intl-tel-input';
+import 'intl-tel-input/build/css/intlTelInput.css';
 
 import { Input } from '../input';
 
-import { IPhoneInputProps } from './types';
+import './styles.css';
 
-const RUSSIA_COUNTRY_CODE = '+7 ';
-const MIN_NUMBER_COUNT = 9;
-const ERROR_MESSAGE = `Номер телефона должен содержать минимум ${MIN_NUMBER_COUNT} цифр`;
+export const PhoneInput: FunctionComponent = () => {
+  const phoneInputRef = useRef(null);
 
-const onInputDefault = (event: React.ChangeEvent<HTMLInputElement>) => {
-  const input = event.target;
-  const numberCount = input.value.replace(/\D+/g, '').length;
-  if (numberCount < MIN_NUMBER_COUNT) {
-    input.setCustomValidity(ERROR_MESSAGE);
-  } else {
-    input.setCustomValidity('');
-  }
-};
+  useEffect(() => {
+    if (!phoneInputRef.current) return;
 
-export const PhoneInput: FunctionComponent<IPhoneInputProps> = ({
-  defaultCode = RUSSIA_COUNTRY_CODE,
-  onChange,
-  onInput = onInputDefault,
-  onFocus,
-  onBlur,
-  ...inputProps
-}) => {
-  const handleFocus = useCallback(
-    event => {
-      if (!event.target.value) {
-        onChange(defaultCode);
-        onInput(event);
-      }
-      if (onFocus) onFocus(event);
-    },
-    [defaultCode, onChange, onInput, onFocus],
-  );
+    intlTelInput(phoneInputRef.current, {
+      utilsScript: '/utils.js',
+      initialCountry: 'ru',
+      preferredCountries: [],
+    });
+  }, []);
 
-  const handleBlur = useCallback(
-    event => {
-      if (event.target.value === defaultCode) {
-        onChange('');
-      }
-
-      if (onBlur) onBlur(event);
-    },
-    [defaultCode, onChange, onBlur],
-  );
-
-  const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(event.target.value);
-    },
-    [onChange],
-  );
-
-  return (
-    <Input
-      label="Номер телефона"
-      name="phone"
-      onInput={onInput}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      required
-      type="tel"
-      onChange={handleChange}
-      {...inputProps}
-    />
-  );
+  return <Input inputRef={phoneInputRef} type="tel" required />;
 };
