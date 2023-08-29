@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useMemo } from 'react';
+import { DebounceInput } from 'react-debounce-input';
 
 import { useForm, LOCALE, TIME_ZONE, CALL_ME } from '../../useForm';
 import { reachGoal } from '../../yandexMetrikaWrapper';
@@ -93,7 +94,9 @@ const Form: FunctionComponent = ({ isLight }) => {
           $isEmpty={!childBirthDate}
           $isSafariDesktop={isSafari && isDesktop}
         >
-          <Input
+          <DebounceInput
+            element={Input}
+            debounceTimeout={500}
             type="date"
             placeholder="Дата рождения ребенка"
             required

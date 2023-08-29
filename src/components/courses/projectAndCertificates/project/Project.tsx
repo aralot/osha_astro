@@ -10,20 +10,20 @@ const IFRAME_SRC =
 const Project: FunctionComponent = ({}) => {
   const iframeRef = useRef(null);
 
-  // const onLoad = useCallback(() => {
-  //   if (iframeRef.current) {
-  //     setTimeout(() => {
-  //       iframeRef.current.onload = event => {
-  //         event.target.style.opacity = 1;
-  //       };
-  //       iframeRef.current.src = IFRAME_SRC;
-  //     }, 5000);
-  //   }
-  // }, [iframeRef]);
+  const onLoad = useCallback(() => {
+    if (iframeRef.current) {
+      setTimeout(() => {
+        iframeRef.current.onload = event => {
+          event.target.style.opacity = 1;
+        };
+        iframeRef.current.src = IFRAME_SRC;
+      }, 5000);
+    }
+  }, [iframeRef]);
 
   return (
     <Wrapper>
-      <Placeholder src={placeholder} loading="lazy" />
+      <Placeholder src={placeholder} loading="lazy" onLoad={onLoad} />
       <Iframe ref={iframeRef} />
     </Wrapper>
   );
