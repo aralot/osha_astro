@@ -26,8 +26,6 @@ const Form: FunctionComponent = ({}) => {
         onFocus={() => {
           loadReCaptchaSource();
         }}
-        placeholder="+7 (999) 999-99-99"
-        label=""
       />
       <Button type="submit" disabled={isPending}>
         Перезвоните мне

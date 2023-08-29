@@ -39,11 +39,10 @@ const Form: FunctionComponent = ({}) => {
         onFocus={() => {
           loadReCaptchaSource();
         }}
-        placeholder="+7 (999) 999-99-99"
-        label=""
       />
       <Input
         type="email"
+        name="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
         onFocus={() => {

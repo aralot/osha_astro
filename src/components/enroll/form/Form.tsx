@@ -183,7 +183,13 @@ const Form: FunctionComponent = ({ isLight }) => {
           </>
         </Tooltip>
 
-        <PhoneInput />
+        <PhoneInput
+          value={phone}
+          onChange={setPhone}
+          onFocus={() => {
+            loadReCaptchaSource();
+          }}
+        />
 
         <Input
           type="email"
