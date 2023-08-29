@@ -23,7 +23,7 @@ const Project: FunctionComponent = ({}) => {
 
   return (
     <Wrapper>
-      <Placeholder src={placeholder} loading="lazy" onLoad={onLoad} />
+      <Placeholder src={placeholder} loading="lazy" />
       <Iframe ref={iframeRef} />
     </Wrapper>
   );
