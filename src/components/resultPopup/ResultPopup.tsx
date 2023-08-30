@@ -1,18 +1,22 @@
 import React, { FunctionComponent, useEffect } from 'react';
 
-import { P3, Popup, Icons, preloader } from '../ui-kit';
+import { P3, Popup, Icons } from '../ui-kit';
 
-import { Content, IconBox, Title } from './styles';
+import { Content, IconBox, Preloader, Title } from './styles';
 import { IResultPopupProps } from './types';
 
 export const ResultPopup: FunctionComponent<IResultPopupProps> = ({
   close,
   isSuccess,
   isVisible,
+  isLoading,
 }) => {
   let Icon = Icons.large.close;
   let title = 'Ой! Что-то пошло не так.';
   let description = 'Попробуйте отправить заявку еще раз';
+
+  // @hardcode
+  isLoading = true;
 
   if (isSuccess) {
     Icon = Icons.large.ok;
@@ -22,13 +26,13 @@ export const ResultPopup: FunctionComponent<IResultPopupProps> = ({
   }
 
   if (isLoading) {
-    Icon = Icons.large.ok;
+    Icon = Preloader;
     title = 'Спасибо! Данные успешно отправлены.';
     description =
       'В течение 10 минут на WhatsApp вам поступит сообщение с информацией о записи ';
   }
 
-  const Icon = isSuccess ? Icons.large.ok : Icons.large.close;
+  // const Icon = isSuccess ? Icons.large.ok : Icons.large.close;
 
   // @hardcode
   isVisible = true;
@@ -36,7 +40,7 @@ export const ResultPopup: FunctionComponent<IResultPopupProps> = ({
   return (
     <Popup isVisible={isVisible} onClose={close} isRtl={false}>
       <Content>
-        <IconBox $isSuccess={isSuccess}>
+        <IconBox $isSuccess={isSuccess} $isLoading={isLoading}>
           <Icon />
         </IconBox>
         <Title>
