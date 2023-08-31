@@ -88,6 +88,8 @@ export const BadgeProject = styled.div`
 
   transform: rotate(-5.49deg);
 
+  z-index: 1;
+
   span {
     color: ${Tokens.day.interactive.primary};
   }

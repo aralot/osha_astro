@@ -15,9 +15,10 @@ export const Placeholder = styled.img`
   top: 0;
   object-fit: cover;
   border-radius: 24px;
+  z-index: 1;
 `;
 
-export const Video = styled.div`
+export const Iframe = styled.iframe`
   position: absolute;
   left: 0;
   top: 0;

@@ -3,73 +3,30 @@ import React, {
   useCallback,
   useEffect,
   useRef,
+  useState,
 } from 'react';
 
-import { Wrapper, Video, Placeholder } from './styles';
+import { Wrapper, Iframe, Placeholder } from './styles';
 
 import placeholder from './placeholder.webp';
 
-const loadVideo = () => {
-  const tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/iframe_api';
-  const firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-};
+const IFRAME_SRC =
+  'https://www.youtube.com/embed/yc3HqFUtp4I?loop=1&playlist=yc3HqFUtp4I&mute=1&autoplay=1';
 
 const Project: FunctionComponent = ({}) => {
+  const [isIntersecting, setIsIntersecting] = useState(false);
   const wrapperRef = useRef(null);
+  const placeholderRef = useRef(null);
 
   useEffect(() => {
-    if (!wrapperRef.current) return;
-
-    let player = null;
-    let playerIframe = null;
-    let isIntersecting = false;
-    let isVideoLoading = false;
-    let isPlayerReady = false;
-
-    window.onYouTubeIframeAPIReady = () => {
-      player = new YT.Player('player', {
-        enablejsapi: 1,
-        events: {
-          onReady: event => {
-            isPlayerReady = true;
-
-            if (isIntersecting) player.playVideo();
-          },
-        },
-        loop: 1,
-        origin: window.location.origin,
-        playlist: 'yc3HqFUtp4I',
-        videoId: 'yc3HqFUtp4I',
-      });
-
-      playerIframe = document.getElementById('player');
-      playerIframe.style.opacity = 0;
-    };
-
+    if (!wrapperRef.current || !placeholderRef.current) return;
     const observer = new IntersectionObserver(
       entry => {
-        isIntersecting = entry[0].isIntersecting;
-
-        console.log(isIntersecting, 'isIntersecting');
-
-        if (isIntersecting && !isVideoLoading) {
-          loadVideo();
-          isVideoLoading = true;
-          return;
-        }
-
-        if (!isPlayerReady) return;
-
-        if (isIntersecting) {
-          player.playVideo();
-          playerIframe.style.transition = 'opacity 2.4s ease';
-          playerIframe.style.opacity = 1;
-        } else {
-          player.stopVideo();
-          playerIframe.style.transition = 'unset';
-          playerIframe.style.opacity = 0;
+        const isIntersecting = entry[0].isIntersecting;
+        setIsIntersecting(isIntersecting);
+        if (!isIntersecting) {
+          placeholderRef.current.style.transition = 'unset';
+          placeholderRef.current.style.opacity = 1;
         }
       },
       { root: null },
@@ -77,10 +34,19 @@ const Project: FunctionComponent = ({}) => {
     observer.observe(wrapperRef.current);
   }, [wrapperRef.current]);
 
+  const onIframeLoad = useCallback(() => {
+    if (!placeholderRef.current) return;
+
+    placeholderRef.current.style.transition = 'opacity 2.4s ease';
+    placeholderRef.current.style.opacity = 0;
+  }, []);
+
   return (
     <Wrapper ref={wrapperRef}>
-      <Placeholder src={placeholder} loading="lazy" />
-      <Video id="player" />
+      <Placeholder src={placeholder} loading="lazy" ref={placeholderRef} />
+      {isIntersecting && (
+        <Iframe id="player" src={IFRAME_SRC} onLoad={onIframeLoad} />
+      )}
     </Wrapper>
   );
 };
