@@ -26,29 +26,33 @@ const Project: FunctionComponent = ({}) => {
     let playerIframe = null;
     let isIntersecting = false;
     let isVideoLoading = false;
+    let isPlayerReady = false;
 
     window.onYouTubeIframeAPIReady = () => {
       player = new YT.Player('player', {
-        autoplay: 1,
-        controls: 0,
+        enablejsapi: 1,
         events: {
           onReady: event => {
-            playerIframe = document.getElementById('player');
-            playerIframe.style.opacity = 0;
+            isPlayerReady = true;
 
-            if (isIntersecting) event.target.playVideo();
+            if (isIntersecting) player.playVideo();
           },
         },
         loop: 1,
         origin: window.location.origin,
-        rel: 0,
+        playlist: 'yc3HqFUtp4I',
         videoId: 'yc3HqFUtp4I',
       });
+
+      playerIframe = document.getElementById('player');
+      playerIframe.style.opacity = 0;
     };
 
     const observer = new IntersectionObserver(
       entry => {
         isIntersecting = entry[0].isIntersecting;
+
+        console.log(isIntersecting, 'isIntersecting');
 
         if (isIntersecting && !isVideoLoading) {
           loadVideo();
@@ -56,9 +60,7 @@ const Project: FunctionComponent = ({}) => {
           return;
         }
 
-        if (!playerIframe) return;
-
-        clearTimeout(showVideoTimeout);
+        if (!isPlayerReady) return;
 
         if (isIntersecting) {
           player.playVideo();
