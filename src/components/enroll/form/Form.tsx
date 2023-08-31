@@ -220,8 +220,9 @@ const Form: FunctionComponent = ({ isLight }) => {
       </StyledForm>
 
       <ResultPopup
-        isSuccess={isSuccess}
         close={closePopup}
+        isLoading={isPending}
+        isSuccess={isSuccess}
         isVisible={isPopupVisible}
       />
     </>

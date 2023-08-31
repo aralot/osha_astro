@@ -152,6 +152,7 @@ export function useForm({
 
       let isSuccess = false;
 
+      openPopup();
       setIsPending(true);
 
       await loadReCaptchaSource();
@@ -233,7 +234,6 @@ export function useForm({
         setDateSlotValue('');
         setTimeSlotValue('');
       }
-      openPopup();
       setIsPending(false);
 
       return isSuccess;

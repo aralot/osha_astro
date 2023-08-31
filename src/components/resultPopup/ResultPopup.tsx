@@ -15,9 +15,6 @@ export const ResultPopup: FunctionComponent<IResultPopupProps> = ({
   let title = 'Ой! Что-то пошло не так.';
   let description = 'Попробуйте отправить заявку еще раз';
 
-  // @hardcode
-  isLoading = true;
-
   if (isSuccess) {
     Icon = Icons.large.ok;
     title = 'Спасибо! Данные успешно отправлены.';
@@ -27,32 +24,22 @@ export const ResultPopup: FunctionComponent<IResultPopupProps> = ({
 
   if (isLoading) {
     Icon = Preloader;
-    title = 'Спасибо! Данные успешно отправлены.';
-    description =
-      'В течение 10 минут на WhatsApp вам поступит сообщение с информацией о записи ';
+    title = 'Создаём заявку...';
+    description = '';
   }
 
-  // const Icon = isSuccess ? Icons.large.ok : Icons.large.close;
-
-  // @hardcode
-  isVisible = true;
-
   return (
-    <Popup isVisible={isVisible} onClose={close} isRtl={false}>
+    <Popup
+      isVisible={isVisible}
+      onClose={isLoading ? undefined : close}
+      isRtl={false}
+    >
       <Content>
         <IconBox $isSuccess={isSuccess} $isLoading={isLoading}>
           <Icon />
         </IconBox>
-        <Title>
-          {isSuccess
-            ? 'Спасибо! Данные успешно отправлены.'
-            : 'Ой! Что-то пошло не так.'}
-        </Title>
-        <P3>
-          {isSuccess
-            ? 'В течение 10 минут на WhatsApp вам поступит сообщение с информацией о записи '
-            : 'Попробуйте отправить заявку еще раз'}
-        </P3>
+        <Title>{title}</Title>
+        {description && <P3>{description}</P3>}
       </Content>
     </Popup>
   );

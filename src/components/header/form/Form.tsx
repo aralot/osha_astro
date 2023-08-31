@@ -31,8 +31,9 @@ const Form: FunctionComponent = ({}) => {
         Перезвоните мне
       </Button>
       <ResultPopup
-        isSuccess={isSuccess}
         close={closePopup}
+        isLoading={isPending}
+        isSuccess={isSuccess}
         isVisible={isPopupVisible}
       />
     </Wrapper>
