@@ -17,7 +17,7 @@ export const Placeholder = styled.img`
   border-radius: 24px;
 `;
 
-export const Iframe = styled.iframe`
+export const Video = styled.div`
   position: absolute;
   left: 0;
   top: 0;
@@ -26,6 +26,4 @@ export const Iframe = styled.iframe`
   border: none;
   border-radius: 24px;
   overflow: hidden;
-  opacity: 0;
-  transition: opacity 2.4s ease 0s;
 `;

@@ -5,59 +5,80 @@ import React, {
   useRef,
 } from 'react';
 
-import { Wrapper, Iframe, Placeholder } from './styles';
+import { Wrapper, Video, Placeholder } from './styles';
 
 import placeholder from './placeholder.webp';
 
-const IFRAME_SRC =
-  'https://www.youtube.com/embed/yc3HqFUtp4I?loop=1&playlist=yc3HqFUtp4I&mute=1&autoplay=1&enablejsapi=1';
+const loadVideo = () => {
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+};
 
 const Project: FunctionComponent = ({}) => {
-  const iframeRef = useRef(null);
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    if (!wrapperRef.current || !iframeRef.current) return;
+    if (!wrapperRef.current) return;
 
     let player = null;
+    let playerIframe = null;
+    let isIntersecting = false;
+    let isVideoLoading = false;
 
     window.onYouTubeIframeAPIReady = () => {
-      player = new YT.Player('player');
+      player = new YT.Player('player', {
+        autoplay: 1,
+        controls: 0,
+        events: {
+          onReady: event => {
+            playerIframe = document.getElementById('player');
+            playerIframe.style.opacity = 0;
+
+            if (isIntersecting) event.target.playVideo();
+          },
+        },
+        loop: 1,
+        origin: window.location.origin,
+        rel: 0,
+        videoId: 'yc3HqFUtp4I',
+      });
     };
 
     const observer = new IntersectionObserver(
       entry => {
-        const isIntersecting = entry[0].isIntersecting;
+        isIntersecting = entry[0].isIntersecting;
 
-        // player is initialized - toogle "play" / "pause"
-        if (player) {
-          player[isIntersecting ? 'playVideo' : 'pauseVideo']();
+        if (isIntersecting && !isVideoLoading) {
+          loadVideo();
+          isVideoLoading = true;
           return;
         }
 
-        if (isIntersecting) {
-          // already loading iframe
-          if (iframeRef.current.src) return;
+        if (!playerIframe) return;
 
-          // load iframe
-          iframeRef.current.onload = event => {
-            event.target.style.opacity = 1;
-          };
-          iframeRef.current.src = IFRAME_SRC;
+        clearTimeout(showVideoTimeout);
+
+        if (isIntersecting) {
+          player.playVideo();
+          playerIframe.style.transition = 'opacity 2.4s ease';
+          playerIframe.style.opacity = 1;
+        } else {
+          player.stopVideo();
+          playerIframe.style.transition = 'unset';
+          playerIframe.style.opacity = 0;
         }
       },
-      {
-        root: null,
-        threshold: 0.75,
-      },
+      { root: null },
     );
     observer.observe(wrapperRef.current);
-  }, []);
+  }, [wrapperRef.current]);
 
   return (
     <Wrapper ref={wrapperRef}>
       <Placeholder src={placeholder} loading="lazy" />
-      <Iframe id="player" ref={iframeRef} />
+      <Video id="player" />
     </Wrapper>
   );
 };
