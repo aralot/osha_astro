@@ -28,6 +28,8 @@ export const Button = styled.button`
   cursor: pointer;
   outline: none;
 
+  text-wrap: nowrap;
+
   &:hover {
     color: ${Tokens.day.interactive.primaryHover};
   }

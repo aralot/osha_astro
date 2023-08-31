@@ -15,6 +15,7 @@ import { IPhoneInputProps } from './types';
 export const PhoneInput: FunctionComponent<IPhoneInputProps> = ({
   onChange,
   onInput,
+  value: initialValue,
   ...inputProps
 }) => {
   const phoneInputRef = useRef(null);
@@ -26,13 +27,24 @@ export const PhoneInput: FunctionComponent<IPhoneInputProps> = ({
     itiRef.current = intlTelInput(phoneInputRef.current, {
       utilsScript: '/utils.js',
       initialCountry: 'ru',
-      preferredCountries: [],
+      preferredCountries: ['ru'],
     });
   }, []);
 
+  useEffect(() => {
+    if (!phoneInputRef.current) return;
+
+    // reset
+    if (initialValue === '') {
+      phoneInputRef.current.value = '';
+    }
+  }, [phoneInputRef.current, initialValue]);
+
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(event.target.value);
+      if (!itiRef.current) return;
+
+      onChange(itiRef.current.getNumber());
     },
     [onChange],
   );
