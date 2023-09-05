@@ -30,9 +30,12 @@ export const IconBox = styled.div<{ $isSuccess: boolean; $isLoading: boolean }>`
   }};
 
   ${({ $isLoading }) => {
-    return css`
-      border: none;
-    `;
+    return (
+      $isLoading &&
+      css`
+        border: none;
+      `
+    );
   }};
 `;
 
