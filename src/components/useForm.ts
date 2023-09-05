@@ -55,7 +55,9 @@ const getCookieByName = (name: string) => {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api/v2',
+    //baseUrl: '/api/v2',
+    // @hardcode
+    baseUrl: 'https://temp-try-to-disable-cors.dev.alg.team/api/v2',
   }),
   endpoints: builder => ({
     createOnlineBooking: builder.mutation({
@@ -228,7 +230,11 @@ export function useForm({
         }
       } catch (e) {
         console.error(e);
-        refetchSlots();
+        try {
+          refetchSlots();
+        } catch (e) {
+          console.error(e);
+        }
         setDateSlotValue('');
         setTimeSlotValue('');
       }
