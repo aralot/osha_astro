@@ -49,7 +49,7 @@ export const PhoneInput: FunctionComponent<IPhoneInputProps> = ({
     [onChange],
   );
 
-  const handleInput = useCallback(() => {
+  const handleInput = useCallback(event => {
     if (!itiRef.current) return;
 
     const input = event.target;
