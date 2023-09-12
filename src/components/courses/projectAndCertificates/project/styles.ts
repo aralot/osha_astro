@@ -15,6 +15,7 @@ export const Placeholder = styled.img`
   top: 0;
   object-fit: cover;
   border-radius: 24px;
+  z-index: 1;
 `;
 
 export const Iframe = styled.iframe`
@@ -26,6 +27,4 @@ export const Iframe = styled.iframe`
   border: none;
   border-radius: 24px;
   overflow: hidden;
-  opacity: 0;
-  transition: opacity 2.4s ease 0s;
 `;
