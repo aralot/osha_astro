@@ -55,9 +55,10 @@ const getCookieByName = (name: string) => {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    //baseUrl: '/api/v2',
-    // @hardcode
-    baseUrl: 'https://temp-try-to-disable-cors.dev.alg.team/api/v2',
+      // @hardcode
+      window.location.origin === 'https://school2.algoritmika.org'
+        ? 'https://temp-try-to-disable-cors.dev.alg.team/api/v2'
+        : '/api/v2',
   }),
   endpoints: builder => ({
     createOnlineBooking: builder.mutation({
