@@ -55,6 +55,7 @@ const getCookieByName = (name: string) => {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
+    baseUrl:
       // @hardcode
       window.location.origin === 'https://school2.algoritmika.org'
         ? 'https://temp-try-to-disable-cors.dev.alg.team/api/v2'
