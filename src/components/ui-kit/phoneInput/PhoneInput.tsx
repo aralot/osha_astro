@@ -21,34 +21,6 @@ export const PhoneInput: FunctionComponent<IPhoneInputProps> = ({
   const phoneInputRef = useRef(null);
   const itiRef = useRef(null);
 
-  useEffect(() => {
-    if (!phoneInputRef.current) return;
-
-    itiRef.current = intlTelInput(phoneInputRef.current, {
-      utilsScript: '/utils.js',
-      initialCountry: 'ru',
-      preferredCountries: ['ru'],
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!phoneInputRef.current) return;
-
-    // reset
-    if (initialValue === '') {
-      phoneInputRef.current.value = '';
-    }
-  }, [phoneInputRef.current, initialValue]);
-
-  const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (!itiRef.current) return;
-
-      onChange(itiRef.current.getNumber());
-    },
-    [onChange],
-  );
-
   const handleInput = useCallback(event => {
     if (!itiRef.current) return;
 
@@ -73,6 +45,38 @@ export const PhoneInput: FunctionComponent<IPhoneInputProps> = ({
       input.setCustomValidity(error);
     }
   }, []);
+
+  useEffect(() => {
+    if (!phoneInputRef.current) return;
+
+    itiRef.current = intlTelInput(phoneInputRef.current, {
+      utilsScript: '/utils.js',
+      initialCountry: 'ru',
+      preferredCountries: ['ru'],
+    });
+
+    phoneInputRef.current.addEventListener('countrychange', event => {
+      handleInput(event);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!phoneInputRef.current) return;
+
+    // reset
+    if (initialValue === '') {
+      phoneInputRef.current.value = '';
+    }
+  }, [phoneInputRef.current, initialValue]);
+
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (!itiRef.current) return;
+
+      onChange(itiRef.current.getNumber());
+    },
+    [onChange],
+  );
 
   return (
     <Input
